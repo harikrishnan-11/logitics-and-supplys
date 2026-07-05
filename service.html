@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Stackly Logistics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body class="page-shell">
+  <header class="header-nav-bar" id="siteHeader">
+    <div class="logo-box">
+      <a href="index.html">Stackly<span>.</span></a>
+    </div>
+    <ul class="nav-links-wrapper" id="navLinksWrapper" aria-label="Primary navigation">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="service.html" class="nav-link">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="login.html" class="header-action-btn">Login</a></li>
+    </ul>
+    <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Close navigation menu">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </header>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+
+  <main>
+    <!-- HERO — enriched with quick stats + trust chips -->
+    <section class="page-hero">
+      <div class="page-hero-grid">
+        <div>
+          <div class="section-badge">Services</div>
+          <h1>End-to-end logistics services built around growth.</h1>
+          <p>Whether you need regional distribution, global freight coordination, or same-day fulfillment, our team creates a plan that feels effortless.</p>
+          <div class="page-hero-actions">
+            <a href="contact.html" class="inline-btn">Request a Proposal</a>
+          </div>
+          <div class="hero-quickstats">
+            <div class="hero-quickstat"><b>12</b><span>Warehouse nodes</span></div>
+            <div class="hero-quickstat"><b>8</b><span>Countries covered</span></div>
+            <div class="hero-quickstat"><b>24–48h</b><span>Typical go-live</span></div>
+          </div>
+        </div>
+        <div class="page-hero-card" data-reveal="fade">
+          <img class="page-hero-image" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1000" alt="Warehouse and fulfillment operations" loading="lazy">
+          <div class="hero-badges">
+            <span><i class="fa-solid fa-box"></i> Fulfillment</span>
+            <span><i class="fa-solid fa-globe"></i> International Freight</span>
+            <span><i class="fa-solid fa-chart-line"></i> Inventory Planning</span>
+          </div>
+          <p>Our services combine operational excellence with a modern digital layer so your teams can stay in control at every step.</p>
+          <div class="hero-chip-row">
+            <span class="hero-chip">SLA-backed</span>
+            <span class="hero-chip">Dedicated coordinator</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE SERVICES — ledger grid, animated on scroll + hover -->
+    <section class="sk-section">
+      <span class="sk-eyebrow">What We Deliver</span>
+      <h2 class="sk-h2">Four services, one coordinated system</h2>
+      <p class="sk-lede">Each one works standalone or together — most brands start with fulfillment and add transport or cross-border as they scale.</p>
+
+      <div class="service-ledger-grid">
+        <div class="service-ledger-card sk-animate" style="--sk-d:.05s">
+          <div class="service-ledger-icon"><i class="fa-solid fa-box"></i></div>
+          <h4>Warehousing</h4>
+          <p>Secure, climate-controlled storage with flexible capacity and live inventory visibility.</p>
+        </div>
+        <div class="service-ledger-card sk-animate" style="--sk-d:.15s">
+          <div class="service-ledger-icon"><i class="fa-solid fa-rocket"></i></div>
+          <h4>Order Fulfillment</h4>
+          <p>Pick, pack, and ship with rapid turnaround and real-time order status for every customer.</p>
+        </div>
+        <div class="service-ledger-card sk-animate" style="--sk-d:.25s">
+          <div class="service-ledger-icon"><i class="fa-solid fa-truck"></i></div>
+          <h4>Transport Management</h4>
+          <p>Coordinated freight, route optimization, and milestone tracking across every region.</p>
+        </div>
+        <div class="service-ledger-card sk-animate" style="--sk-d:.35s">
+          <div class="service-ledger-icon"><i class="fa-solid fa-earth-americas"></i></div>
+          <h4>Cross-Border Logistics</h4>
+          <p>Customs-cleared routing and documentation handled end-to-end, not left to you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS FLOW — animated connecting line draws in on scroll -->
+    <section class="sk-section" style="padding-top:0;">
+      <span class="sk-eyebrow">How It Works</span>
+      <h2 class="sk-h2">Simple process, strong control</h2>
+      <p class="sk-lede">The activation path stays simple for you; the execution and reporting behind it stays rigorous.</p>
+
+      <div class="process-flow-wrap">
+        <div class="process-flow-track" data-animate-track>
+          <div class="process-step">
+            <div class="process-step-dot">01</div>
+            <h4>Assess</h4>
+            <p>We review your shipping profile and flag bottlenecks before anything moves.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step-dot">02</div>
+            <h4>Plan</h4>
+            <p>We design a tailored plan across warehousing, transport, and support.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step-dot">03</div>
+            <h4>Deploy</h4>
+            <p>Inventory moves in, integrations connect, and orders start shipping.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step-dot">04</div>
+            <h4>Optimize</h4>
+            <p>We tune routing and capacity continuously as your order volume grows.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUSTRIES — staggered pill cloud -->
+    <section class="sk-section" style="padding-top:0;">
+      <span class="sk-eyebrow">Industries</span>
+      <h2 class="sk-h2">Support tuned to your category</h2>
+      <p class="sk-lede">Every category ships differently — our playbooks already account for it.</p>
+
+      <div class="industry-pill-cloud">
+        <span class="industry-pill sk-animate" style="--sk-d:.02s">Retail</span>
+        <span class="industry-pill sk-animate" style="--sk-d:.08s">Healthcare</span>
+        <span class="industry-pill sk-animate" style="--sk-d:.14s">Manufacturing</span>
+        <span class="industry-pill sk-animate" style="--sk-d:.20s">Consumer Goods</span>
+        <span class="industry-pill sk-animate" style="--sk-d:.26s">Cold Chain</span>
+        <span class="industry-pill sk-animate" style="--sk-d:.32s">E-commerce</span>
+        <span class="industry-pill sk-animate" style="--sk-d:.38s">Electronics</span>
+        <span class="industry-pill sk-animate" style="--sk-d:.44s">Apparel</span>
+      </div>
+    </section>
+
+    <!-- COVERAGE — pulsing network map -->
+    <section class="sk-section">
+      <div class="sheet-columns" style="grid-template-columns:1fr 1fr;">
+        <div class="sk-animate">
+          <span class="sk-eyebrow">Coverage</span>
+          <h2 class="sk-h2">Regional coverage that scales</h2>
+          <p class="sk-lede">Our network keeps orders moving across urban centers and regional hubs, with fewer handoffs and fewer delays.</p>
+          <div class="hero-chip-row">
+            <span class="hero-chip">Cross-dock support</span>
+            <span class="hero-chip">Last-mile flexibility</span>
+            <span class="hero-chip">Multi-node visibility</span>
+          </div>
+        </div>
+
+        <div class="coverage-map-panel sk-animate" style="--sk-d:.1s">
+          <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="90" cy="90" r="4" class="svc-map-dot"></circle>
+            <circle cx="90" cy="90" r="4" class="svc-map-ring"></circle>
+            <circle cx="180" cy="180" r="4" class="svc-map-dot"></circle>
+            <circle cx="180" cy="180" r="4" class="svc-map-ring" style="animation-delay:.4s"></circle>
+            <circle cx="260" cy="110" r="4" class="svc-map-dot"></circle>
+            <circle cx="260" cy="110" r="4" class="svc-map-ring" style="animation-delay:.8s"></circle>
+            <circle cx="340" cy="190" r="4" class="svc-map-dot"></circle>
+            <circle cx="340" cy="190" r="4" class="svc-map-ring" style="animation-delay:1.2s"></circle>
+            <circle cx="410" cy="100" r="4" class="svc-map-dot"></circle>
+            <circle cx="410" cy="100" r="4" class="svc-map-ring" style="animation-delay:1.6s"></circle>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS — dark band, count-up on scroll -->
+    <section class="sk-section sk-section--dark">
+      <span class="sk-eyebrow">By The Numbers</span>
+      <h2 class="sk-h2">What the network moves</h2>
+
+      <div class="stats-counter-band">
+        <div class="stats-counter-item sk-animate" style="--sk-d:.05s">
+          <b><span class="count-target" data-count-to="150">0</span>M+</b>
+          <span>Packages shipped / year</span>
+        </div>
+        <div class="stats-counter-item sk-animate" style="--sk-d:.15s">
+          <b><span class="count-target" data-count-to="60">0</span>+</b>
+          <span>Carrier partners</span>
+        </div>
+        <div class="stats-counter-item sk-animate" style="--sk-d:.25s">
+          <b><span class="count-target" data-count-to="99">0</span>%</b>
+          <span>On-time dispatch rate</span>
+        </div>
+        <div class="stats-counter-item sk-animate" style="--sk-d:.35s">
+          <b><span class="count-target" data-count-to="24">0</span>hr</b>
+          <span>Avg. dock-to-stock</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="sk-section sk-cta-section">
+      <div class="cta-panel sk-animate">
+        <h2>Let's build a better flow</h2>
+        <div class="page-hero-actions">
+          <a href="signup.html" class="inline-btn">Open an Account</a>
+          <a href="contact.html" class="inline-btn-dark">Talk to a Specialist</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-block">
+    <div class="footer-main-layout">
+      <div class="footer-brand-column" data-reveal="fade">
+        <div class="logo-lockup">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 19L19 5M19 5H9M19 5V15" stroke="#F2A93B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Stackly
+        </div>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Socials</h4>
+        <ul>
+          <li><a href="404.html">Facebook</a></li>
+          <li><a href="404.html">Linkedin</a></li>
+          <li><a href="404.html">X</a></li>
+          <li><a href="404.html">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column newsletter-wrapper" data-reveal="fade">
+        <h4>Subscribe Newsletter</h4>
+        <p>Sign up to our weekly newsletter to get the latest updates.</p>
+        <div class="newsletter-field-box">
+          <input type="email" placeholder="Enter your email" required>
+          <button class="btn-news-submit" aria-label="Submit email address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal-row">
+      <div class="legal-links">
+        <a href="404.html">Privacy Policies</a>
+        <a href="404.html">Terms of use</a>
+      </div>
+      <div>©2026 Stackly. All rights reserved.</div>
+    </div>
+  </footer>
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      var targets = document.querySelectorAll('.sk-animate, [data-animate-track]');
+
+      function animateCount(el) {
+        var target = parseFloat(el.getAttribute('data-count-to'));
+        if (isNaN(target)) return;
+        var start = 0;
+        var duration = 1100;
+        var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(start + (target - start) * eased);
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('sk-in-view'); });
+        document.querySelectorAll('.count-target').forEach(animateCount);
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('sk-in-view');
+          entry.target.querySelectorAll('.count-target').forEach(animateCount);
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.3 });
+
+      targets.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>

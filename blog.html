@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Stackly Logistics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body class="page-shell">
+  <header class="header-nav-bar" id="siteHeader">
+    <div class="logo-box">
+      <a href="index.html">Stackly<span>.</span></a>
+    </div>
+    <ul class="nav-links-wrapper" id="navLinksWrapper" aria-label="Primary navigation">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="service.html" class="nav-link">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="login.html" class="header-action-btn">Login</a></li>
+    </ul>
+    <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  
+  </header>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+
+  <main>
+    <!-- HERO — unchanged -->
+    <section class="page-hero">
+      <div class="page-hero-grid">
+        <div>
+          <div class="section-badge">Blog</div>
+          <h1>Insights for teams navigating modern supply chains.</h1>
+          <p>Read practical tips, trends, and expert views on shipping, fulfillment, and building resilient operations.</p>
+          <div class="page-hero-actions">
+            <a href="contact.html" class="inline-btn">Join the Newsletter</a>
+          </div>
+          <div class="hero-quickstats">
+            <div class="hero-quickstat"><b>120+</b><span>Articles published</span></div>
+            <div class="hero-quickstat"><b>6</b><span>Topic categories</span></div>
+            <div class="hero-quickstat"><b>Weekly</b><span>New release cadence</span></div>
+          </div>
+        </div>
+        <div class="page-hero-card" data-reveal="fade">
+          <img class="page-hero-image" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=1000" alt="Logistics planning board and strategy notes" loading="lazy">
+          <div class="hero-badges">
+            <span><i class="fa-solid fa-newspaper"></i> Weekly Insights</span>
+            <span><i class="fa-solid fa-chart-column"></i> Strategy Notes</span>
+            <span><i class="fa-solid fa-brain"></i> Industry Trends</span>
+          </div>
+          <p>We publish clear, useful guidance to help operations leaders make stronger decisions.</p>
+          <div class="hero-chip-row">
+            <span class="hero-chip">Written by our own ops team</span>
+            <span class="hero-chip">No sponsored posts</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED SPOTLIGHT -->
+    <section class="sk-section blog-featured">
+      <span class="sk-eyebrow">This Week</span>
+      <h2 class="sk-h2">The one worth reading first</h2>
+
+      <div class="featured-card" data-reveal="fade">
+        <div class="featured-media">
+          <span class="featured-flag">Editor's Pick</span>
+          <img src="https://images.unsplash.com/photo-1516576885502-d4665ff0e6f8?auto=format&fit=crop&q=80&w=900" alt="Distribution center dispatch operations" loading="lazy">
+        </div>
+        <div class="featured-body">
+          <span class="meta-pill">Fulfillment Strategy · 5 min read</span>
+          <h3>2-Day Delivery Without the Chaos: A Practical Playbook for Growing Brands</h3>
+          <p>The staffing, cutoff, and carrier-mix decisions that let mid-size brands promise two-day delivery without blowing up their fulfillment costs.</p>
+          <div class="featured-byline">
+            <strong>Priya Nair</strong>
+            <span>·</span>
+            <span>Ops Strategy Lead</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE LOG -->
+    <section class="sk-section blog-index">
+      <span class="sk-eyebrow">Full Index</span>
+      <h2 class="sk-h2">Every article, in order</h2>
+
+      <div class="index-log" data-reveal="fade">
+        <div class="log-row">
+          <span class="log-index-num">002</span>
+          <span class="log-title">Returns That Retain: Turning RMAs into Repeat Customers</span>
+          <span class="log-cat">Reverse Logistics</span>
+          <span class="log-time">12 min read</span>
+        </div>
+        <div class="log-row">
+          <span class="log-index-num">003</span>
+          <span class="log-title">The Inventory Truth: Forecasting, Safety Stock, and What to Fix First</span>
+          <span class="log-cat">Inventory</span>
+          <span class="log-time">8 min read</span>
+        </div>
+        <div class="log-row">
+          <span class="log-index-num">004</span>
+          <span class="log-title">Cross-Border 101: Incoterms, Duties, and the Paperwork Brands Forget</span>
+          <span class="log-cat">Cross-Border</span>
+          <span class="log-time">15 min read</span>
+        </div>
+        <div class="log-row">
+          <span class="log-index-num">005</span>
+          <span class="log-title">Warehouse Layout Mistakes That Quietly Slow Down Every Pick</span>
+          <span class="log-cat">Warehousing</span>
+          <span class="log-time">9 min read</span>
+        </div>
+        <div class="log-row">
+          <span class="log-index-num">006</span>
+          <span class="log-title">Choosing a Carrier Mix: What Rate Cards Don't Tell You</span>
+          <span class="log-cat">Carrier Evaluation</span>
+          <span class="log-time">11 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="sk-section categories" style="padding-top:0;">
+      <span class="sk-eyebrow">Browse By Category</span>
+      <h2 class="sk-h2">Find the operational problem you're solving</h2>
+
+      <div class="category-grid" data-reveal="fade">
+        <div class="category-card">
+          <span class="cat-count">18 articles</span>
+          <h4>Fulfillment Strategy</h4>
+          <p>Cutoffs, staffing, and carrier mix for keeping delivery promises during peak demand.</p>
+        </div>
+        <div class="category-card">
+          <span class="cat-count">11 articles</span>
+          <h4>Warehousing</h4>
+          <p>Layout, slotting, and receiving practices that shorten dock-to-stock time.</p>
+        </div>
+        <div class="category-card">
+          <span class="cat-count">9 articles</span>
+          <h4>Cross-Border</h4>
+          <p>Incoterms, duties, and the customs paperwork brands most often get wrong.</p>
+        </div>
+        <div class="category-card">
+          <span class="cat-count">14 articles</span>
+          <h4>Inventory</h4>
+          <p>Forecasting and safety stock models for brands scaling past spreadsheets.</p>
+        </div>
+        <div class="category-card">
+          <span class="cat-count">7 articles</span>
+          <h4>Reverse Logistics</h4>
+          <p>Turning returns into a retention channel instead of a cost center.</p>
+        </div>
+        <div class="category-card">
+          <span class="cat-count">10 articles</span>
+          <h4>Carrier Evaluation</h4>
+          <p>What rate cards leave out, and how to actually compare service levels.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTHORS -->
+    <section class="sk-section" style="padding-top:0;">
+      <span class="sk-eyebrow">Who Writes This</span>
+      <h2 class="sk-h2">Practitioners, not marketers</h2>
+      <p class="sk-lede">Every article is written or reviewed by someone who runs the operation being described.</p>
+
+      <div class="author-row" data-reveal="fade">
+        <div class="author-card">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150" alt="Priya Nair" loading="lazy">
+          <div>
+            <h5>Priya Nair</h5>
+            <span>Ops Strategy Lead</span>
+          </div>
+        </div>
+        <div class="author-card">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150" alt="Marcus Webb" loading="lazy">
+          <div>
+            <h5>Marcus Webb</h5>
+            <span>VP, Network Ops</span>
+          </div>
+        </div>
+        <div class="author-card">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=150" alt="Dana Okafor" loading="lazy">
+          <div>
+            <h5>Dana Okafor</h5>
+            <span>Chief Operating Officer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUBSCRIBE -->
+    <section class="sk-section subscribe sk-section--dark" style="padding-top:64px;padding-bottom:64px;">
+      <span class="sk-eyebrow">Stay Ahead</span>
+      <h2 class="sk-h2">Get the next one first</h2>
+      <p class="sk-lede">One practical article a week. No filler, unsubscribe anytime.</p>
+      <form class="subscribe-row" style="max-width:440px;margin-top:24px;" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="you@company.com" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="sk-section sk-cta-section">
+      <div class="cta-panel" data-reveal="fade">
+        <h2>Have a logistics problem worth writing about?</h2>
+        <div class="page-hero-actions">
+          <a href="contact.html" class="inline-btn">Pitch Us a Topic</a>
+          <a href="service.html" class="inline-btn-dark">View Services</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-block">
+    <div class="footer-main-layout">
+      <div class="footer-brand-column" data-reveal="fade">
+        <div class="logo-lockup">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 19L19 5M19 5H9M19 5V15" stroke="#F2A93B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Stackly
+        </div>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Socials</h4>
+        <ul>
+          <li><a href="404.html">Facebook</a></li>
+          <li><a href="404.html">Linkedin</a></li>
+          <li><a href="404.html">X</a></li>
+          <li><a href="404.html">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column newsletter-wrapper" data-reveal="fade">
+        <h4>Subscribe Newsletter</h4>
+        <p>Sign up to our weekly newsletter to get the latest updates.</p>
+        <div class="newsletter-field-box">
+          <input type="email" placeholder="Enter your email" required>
+          <button class="btn-news-submit" aria-label="Submit email address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal-row">
+      <div class="legal-links">
+        <a href="404.html">Privacy Policies</a>
+        <a href="404.html">Terms of use</a>
+      </div>
+      <div>©2026 Stackly. All rights reserved.</div>
+    </div>
+  </footer>
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+  <script src="script.js"></script>
+</body>
+</html>

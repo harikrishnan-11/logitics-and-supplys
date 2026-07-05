@@ -15,43 +15,19 @@
     <!-- STICKY MAIN HEADER NAVIGATION BAR -->
     <header class="header-nav-bar" id="siteHeader">
         <div class="logo-box">
-            <a href="#">Stackly<span>.</span></a>
+            <a href="index.html">Stackly<span>.</span></a>
         </div>
 
-        <ul class="nav-links-wrapper" id="navLinksWrapper">
-            <li class="nav-item-dropdown">
-                <a href="#" class="nav-link">
-                    Home
-                  
-                </a>
-               
-            </li>
-            <li class="nav-item-dropdown">
-                <a href="#" class="nav-link">
-                    Pages
-                    
-                </a>
-                
-            </li>
-            <li class="nav-item-dropdown">
-                <a href="#" class="nav-link">
-                    Services
-                  
-                </a>
-              
-            </li>
-            <li class="nav-item-dropdown">
-                <a href="#" class="nav-link">
-                    Blog
-                  
-                </a>
-              
-            </li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-            <li><a href="#contact" class="header-action-btn">Get a Quote</a></li>
+        <ul class="nav-links-wrapper" id="navLinksWrapper" aria-label="Primary navigation">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="service.html" class="nav-link">Services</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="login.html" class="header-action-btn">Login</a></li>
         </ul>
 
-        <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" tabindex="0">
+        <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
             <span></span>
             <span></span>
             <span></span>
@@ -80,17 +56,20 @@
             </div>
 
             <div class="hero-buttons-row">
-                <a href="#contact" class="apex-btn apex-btn-orange">
+                <a href="contact.html" class="apex-btn apex-btn-orange">
                     Get a Free Quote
                     <span class="arrow-icon-circle">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </span>
                 </a>
-                <a href="#services" class="apex-btn apex-btn-white">Explore Services</a>
+                <a href="service.html" class="apex-btn apex-btn-white">Explore Services</a>
             </div>
         </div>
 
         <div class="interactive-card-wrapper">
+            <div class="hero-media-card" data-reveal="fade">
+                
+            </div>
             <div class="tracking-sheet-card">
 
                 <div class="sheet-tab-header-row">
@@ -231,7 +210,7 @@
                 With years of experience in third-party logistics, we provide end-to-end solutions that keep your supply chain running smoothly – from warehousing and order fulfillment to nationwide shipping and real-time tracking. Our mission is simple: to help businesses scale without limits.
             </p>
 
-            <a href="#contact" class="action-btn-orange">Learn More</a>
+            <a href="about.html" class="action-btn-orange">Learn More</a>
 
             <div class="metrics-stack">
 
@@ -352,7 +331,7 @@
             <span class="badge-orange">How It Works</span>
             <h2>From Setup To Shipping</h2>
             <p>A dedicated success manager and clear milestones keep every step simple, transparent, and on schedule.</p>
-            <a href="#contact" class="btn-brand-primary">Get Started</a>
+            <a href="contact.html" class="btn-brand-primary">Get Started</a>
         </div>
 
         <div class="split-steps-grid">
@@ -399,6 +378,207 @@
 
     </section>
 
+    <!-- SECTION: LIVE OPERATIONS DASHBOARD (signature element) -->
+    <section class="ops-dashboard-section" id="operations">
+        <div class="ops-header-row" data-reveal="fade">
+            <span class="ops-eyebrow"><span class="ops-live-dot"></span>Live Network Status</span>
+            <h2>Every Pallet, Parcel, and Pick — Watched in Real Time</h2>
+            <p>The same control tower our ops team stares at all day, minus the coffee stains. Numbers update as orders move through the network.</p>
+        </div>
+
+        <div class="ops-dashboard-grid" data-reveal="scale">
+
+            <div class="ops-panel ops-panel-metrics">
+                <div class="ops-panel-label">Throughput / Last 24h</div>
+
+                <div class="ops-metric-line">
+                    <div class="ops-metric-head">
+                        <span>Order accuracy</span>
+                        <span class="ops-metric-value" data-bar-value="99.6">0%</span>
+                    </div>
+                    <div class="ops-bar-track"><div class="ops-bar-fill" data-bar-fill="99.6"></div></div>
+                </div>
+
+                <div class="ops-metric-line">
+                    <div class="ops-metric-head">
+                        <span>Same-day dispatch</span>
+                        <span class="ops-metric-value" data-bar-value="94">0%</span>
+                    </div>
+                    <div class="ops-bar-track"><div class="ops-bar-fill" data-bar-fill="94"></div></div>
+                </div>
+
+                <div class="ops-metric-line">
+                    <div class="ops-metric-head">
+                        <span>Dock-to-stock &le; 24h</span>
+                        <span class="ops-metric-value" data-bar-value="88">0%</span>
+                    </div>
+                    <div class="ops-bar-track"><div class="ops-bar-fill" data-bar-fill="88"></div></div>
+                </div>
+
+                <div class="ops-stat-duo">
+                    <div class="ops-stat-block">
+                        <span class="ops-stat-num count-up" data-target="41823">0</span>
+                        <span class="ops-stat-label">Parcels processed today</span>
+                    </div>
+                    <div class="ops-stat-block">
+                        <span class="ops-stat-num count-up" data-target="126">0</span>
+                        <span class="ops-stat-label">Trucks on the road right now</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ops-panel ops-panel-feed">
+                <div class="ops-panel-label">Shipment Feed</div>
+                <ul class="ops-feed-list" id="opsFeedList">
+                    <li class="ops-feed-row"><span class="ops-feed-id">#48211</span><span class="ops-feed-desc">Cleared customs — Rotterdam hub</span><span class="ops-feed-tag ops-tag-transit">In Transit</span></li>
+                    <li class="ops-feed-row"><span class="ops-feed-id">#48198</span><span class="ops-feed-desc">Picked & packed — Austin warehouse</span><span class="ops-feed-tag ops-tag-packed">Packed</span></li>
+                    <li class="ops-feed-row"><span class="ops-feed-id">#48176</span><span class="ops-feed-desc">Out for delivery — Chicago metro</span><span class="ops-feed-tag ops-tag-out">Out for Delivery</span></li>
+                    <li class="ops-feed-row"><span class="ops-feed-id">#48154</span><span class="ops-feed-desc">Delivered — signature captured</span><span class="ops-feed-tag ops-tag-done">Delivered</span></li>
+                    <li class="ops-feed-row"><span class="ops-feed-id">#48132</span><span class="ops-feed-desc">Received at Singapore facility</span><span class="ops-feed-tag ops-tag-transit">In Transit</span></li>
+                    <li class="ops-feed-row"><span class="ops-feed-id">#48119</span><span class="ops-feed-desc">Label generated — awaiting pickup</span><span class="ops-feed-tag ops-tag-packed">Packed</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: INDUSTRIES WE SERVE -->
+    <section class="industries-section" id="industries">
+        <span class="section-badge" data-reveal="fade">Industries</span>
+        <h2 data-reveal="fade">Built to Flex Across Categories</h2>
+        <p class="industries-intro" data-reveal="fade">Every category ships differently. Flip a card to see how we handle it.</p>
+
+        <div class="industries-grid">
+
+            <div class="industry-flip-card" data-reveal="scale" tabindex="0">
+                <div class="industry-flip-inner">
+                    <div class="industry-face industry-face-front">
+                        <div class="industry-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23Z"/></svg>
+                        </div>
+                        <h3>Apparel & Fashion</h3>
+                        <p>Size runs, SKU variance, seasonal spikes.</p>
+                    </div>
+                    <div class="industry-face industry-face-back">
+                        <h4>Apparel & Fashion</h4>
+                        <ul>
+                            <li>Multi-variant kitting & polybagging</li>
+                            <li>Peak-season surge capacity</li>
+                            <li>Branded unboxing inserts</li>
+                        </ul>
+                        <span class="industry-back-stat">4.8x faster drop-day dispatch</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="industry-flip-card" data-reveal="scale" tabindex="0">
+                <div class="industry-flip-inner">
+                    <div class="industry-face industry-face-front">
+                        <div class="industry-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7Z"/><path d="M3 7l9 5 9-5"/><path d="M12 22V12"/></svg>
+                        </div>
+                        <h3>Electronics</h3>
+                        <p>Serial tracking, fragile handling, high value.</p>
+                    </div>
+                    <div class="industry-face industry-face-back">
+                        <h4>Electronics</h4>
+                        <ul>
+                            <li>Serial & lot-level inventory tracking</li>
+                            <li>ESD-safe handling protocols</li>
+                            <li>High-value cage storage</li>
+                        </ul>
+                        <span class="industry-back-stat">0.02% damage rate</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="industry-flip-card" data-reveal="scale" tabindex="0">
+                <div class="industry-flip-inner">
+                    <div class="industry-face industry-face-front">
+                        <div class="industry-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6l-4 5v9h14v-9l-4-5V2"/><path d="M9 2h6"/></svg>
+                        </div>
+                        <h3>Health & Beauty</h3>
+                        <p>Batch expiry, temperature bands, compliance.</p>
+                    </div>
+                    <div class="industry-face industry-face-back">
+                        <h4>Health & Beauty</h4>
+                        <ul>
+                            <li>Expiry-date FEFO picking logic</li>
+                            <li>Climate-controlled zones</li>
+                            <li>Retail-compliant labeling</li>
+                        </ul>
+                        <span class="industry-back-stat">100% lot traceability</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="industry-flip-card" data-reveal="scale" tabindex="0">
+                <div class="industry-flip-inner">
+                    <div class="industry-face industry-face-front">
+                        <div class="industry-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M4 11v8h16v-8"/></svg>
+                        </div>
+                        <h3>Home & Furniture</h3>
+                        <p>Oversized freight, white-glove delivery.</p>
+                    </div>
+                    <div class="industry-face industry-face-back">
+                        <h4>Home & Furniture</h4>
+                        <ul>
+                            <li>Freight & LTL rate shopping</li>
+                            <li>White-glove & threshold delivery</li>
+                            <li>Custom crating on demand</li>
+                        </ul>
+                        <span class="industry-back-stat">Zero-damage crating program</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="industry-flip-card" data-reveal="scale" tabindex="0">
+                <div class="industry-flip-inner">
+                    <div class="industry-face industry-face-front">
+                        <div class="industry-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                        </div>
+                        <h3>Food & Beverage</h3>
+                        <p>Cold chain, perishables, batch codes.</p>
+                    </div>
+                    <div class="industry-face industry-face-back">
+                        <h4>Food & Beverage</h4>
+                        <ul>
+                            <li>Cold & frozen chain of custody</li>
+                            <li>Batch/lot recall readiness</li>
+                            <li>Same-day perishable dispatch</li>
+                        </ul>
+                        <span class="industry-back-stat">-18&deg;C to 4&deg;C zone coverage</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="industry-flip-card" data-reveal="scale" tabindex="0">
+                <div class="industry-flip-inner">
+                    <div class="industry-face industry-face-front">
+                        <div class="industry-icon-circle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="15" height="13" rx="1"/><path d="M16 10h4l3 3v7h-7"/><circle cx="5.5" cy="20.5" r="1.5"/><circle cx="18.5" cy="20.5" r="1.5"/></svg>
+                        </div>
+                        <h3>B2B Wholesale</h3>
+                        <p>Pallet-level orders, EDI, retailer routing guides.</p>
+                    </div>
+                    <div class="industry-face industry-face-back">
+                        <h4>B2B Wholesale</h4>
+                        <ul>
+                            <li>EDI 850/856/810 support</li>
+                            <li>Retailer-compliant routing guides</li>
+                            <li>Full & mixed pallet building</li>
+                        </ul>
+                        <span class="industry-back-stat">99.2% chargeback-free</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- SECTION 1: PORTFOLIO -->
     <section class="portfolio-section" id="portfolio">
         <span class="section-badge" data-reveal="fade">Portfolio</span>
@@ -433,6 +613,38 @@
                     <div class="tag-row">
                         <span class="pill-tag">Fulfillment</span>
                         <span class="pill-tag">Retail Compliance</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-card" data-reveal="scale">
+                <div class="portfolio-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1610632380989-680fe40816c6?auto=format&fit=crop&q=80&w=800" alt="PureLeaf Cold Chain Beauty Brand Warehouse Cold Storage" loading="lazy">
+                </div>
+                <div class="portfolio-meta">
+                    <div class="brand-info">
+                        <h4>PureLeaf</h4>
+                        <p>Clean Beauty Brand</p>
+                    </div>
+                    <div class="tag-row">
+                        <span class="pill-tag">Cold Chain</span>
+                        <span class="pill-tag">Subscription Boxes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-card" data-reveal="scale">
+                <div class="portfolio-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&q=80&w=800" alt="CircuitWorks Electronics Distributor Pallet Warehouse Racking" loading="lazy">
+                </div>
+                <div class="portfolio-meta">
+                    <div class="brand-info">
+                        <h4>CircuitWorks</h4>
+                        <p>Electronics Distributor</p>
+                    </div>
+                    <div class="tag-row">
+                        <span class="pill-tag">Serial Tracking</span>
+                        <span class="pill-tag">B2B Wholesale</span>
                     </div>
                 </div>
             </div>
@@ -539,7 +751,7 @@
                     <span class="amt">$1,500</span>
                     <span class="period">/month</span>
                 </div>
-                <a href="#contact" class="btn-pricing secondary">Get Started</a>
+                <a href="signup.html" class="btn-pricing secondary">Get Started</a>
                 <ul class="plan-features-list">
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Monthly Orders: up to 500</li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fulfillment Fee: from $3.20/order + $0.45/item</li>
@@ -560,7 +772,7 @@
                     <span class="amt">$2,500</span>
                     <span class="period">/month</span>
                 </div>
-                <a href="#contact" class="btn-pricing secondary">Get Started</a>
+                <a href="signup.html" class="btn-pricing secondary">Get Started</a>
                 <ul class="plan-features-list">
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Monthly Orders: 500-2,000</li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fulfillment Fee: from $2.80/order + $0.35/item</li>
@@ -580,7 +792,7 @@
                 <div class="price-row">
                     <span class="amt">Custom</span>
                 </div>
-                <a href="#contact" class="btn-pricing primary">Contact Sale</a>
+                <a href="contact.html" class="btn-pricing primary">Contact Sale</a>
                 <ul class="plan-features-list">
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Monthly Orders: 10,000+ or hybrid B2C/B2B</li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Fulfillment Fee: lane-based freight optimization</li>
@@ -605,21 +817,27 @@
                     <div class="client-profile-node">
                         <div class="meta-profile-lockup">
                             <div class="avatar-frame">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Evelyn Ross - NovaWear Chief Operations Officer" loading="lazy">
+                                <img id="testimonialAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Client headshot" loading="lazy">
                             </div>
                             <div class="profile-strings">
-                                <h5>Evelyn Ross</h5>
-                                <p>COO, NovaWear</p>
+                                <h5 id="testimonialName">Evelyn Ross</h5>
+                                <p id="testimonialRole">COO, NovaWear</p>
                             </div>
                         </div>
                         <div class="slider-controls-arrows">
-                            <button class="arrow-nav-btn" aria-label="Previous Testimonial">
+                            <button class="arrow-nav-btn" id="testimonialPrev" aria-label="Previous Testimonial">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
                             </button>
-                            <button class="arrow-nav-btn" aria-label="Next Testimonial">
+                            <button class="arrow-nav-btn" id="testimonialNext" aria-label="Next Testimonial">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"/></svg>
                             </button>
                         </div>
+                    </div>
+
+                    <div class="testimonial-dots" id="testimonialDots">
+                        <button class="testimonial-dot active" data-slide-index="0" aria-label="Testimonial 1"></button>
+                        <button class="testimonial-dot" data-slide-index="1" aria-label="Testimonial 2"></button>
+                        <button class="testimonial-dot" data-slide-index="2" aria-label="Testimonial 3"></button>
                     </div>
                 </div>
 
@@ -631,11 +849,77 @@
                         <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                         <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                     </div>
-                    <p class="testimonial-quote-body">
+                    <p class="testimonial-quote-body" id="testimonialQuote">
                         "Stackly didn't just ship orders—they rebuilt our playbook. Within weeks, our pick/pack errors vanished and two-day delivery became the norm, even during drops. Their team flagged bottlenecks we didn't see and automated the fixes. It feels like we hired an entire ops department overnight."
                     </p>
-                    <a href="#" class="btn-case-study">Read Case Study</a>
+                    <a href="404.html" class="btn-case-study">Read Case Study</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="faq-layout">
+            <div class="faq-left-col" data-reveal="left">
+                <span class="section-badge">FAQ</span>
+                <h2>Questions Brands Ask Before Switching 3PLs</h2>
+                <p class="faq-intro">Can't find what you're looking for? Our team replies to every message within one business day.</p>
+                <a href="contact.html" class="action-btn-orange">Ask Us Directly</a>
+            </div>
+
+            <div class="faq-right-col" data-reveal="right">
+
+                <div class="faq-item active">
+                    <button class="faq-question" type="button">
+                        <span>How fast can we go live with Stackly?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most brands are fully onboarded within 10–14 business days, from initial SKU mapping to your first outbound order. Enterprise catalogs with complex kitting rules typically take 3–4 weeks.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Do you support multi-warehouse inventory splitting?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Inventory automatically splits and rebalances across our network based on regional demand, so orders ship from the closest facility with stock on hand.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>What happens if an order is damaged or lost in transit?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Every shipment is insured and tracked end-to-end. If something goes wrong, our claims team files with the carrier and keeps you updated — you don't have to chase it down yourself.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Can we integrate our own carrier accounts and rates?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. Growth and Enterprise plans can bring negotiated carrier rates, and we'll rate-shop across your accounts alongside our own to find the cheapest compliant option per order.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" type="button">
+                        <span>Is there a long-term contract?</span>
+                        <span class="faq-toggle-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Starter and Growth plans run month-to-month with a 60-day notice period. Enterprise agreements are typically annual and include volume-based pricing tiers.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -691,7 +975,7 @@
             </div>
         </div>
 
-        <a href="#" class="btn-see-more" data-reveal="fade">See More</a>
+        <a href="blog.html" class="btn-see-more" data-reveal="fade">See More</a>
     </section>
 
     <!-- SECTION 2: CONTACT US / REQUEST A QUOTE -->
@@ -728,7 +1012,6 @@
             <div class="quote-form-card" data-reveal="right">
                 <div class="form-tabs-header">
                     <button class="tab-trigger active" type="button" data-form-tab="quote">Request a Quote</button>
-                    <button class="tab-trigger" type="button" data-form-tab="support">Support Message</button>
                 </div>
 
                 <form class="form-body-wrapper" id="quoteForm" onsubmit="event.preventDefault();">
@@ -786,6 +1069,29 @@
         </div>
     </section>
 
+    <!-- SECTION: CTA MARQUEE BANNER -->
+    <section class="cta-banner-section" data-reveal="fade">
+        <div class="cta-marquee-wrapper">
+            <div class="cta-marquee-track">
+                <span>Ready to scale your fulfillment</span><span class="cta-marquee-dot">&bull;</span>
+                <span>Let's talk logistics</span><span class="cta-marquee-dot">&bull;</span>
+                <span>Ready to scale your fulfillment</span><span class="cta-marquee-dot">&bull;</span>
+                <span>Let's talk logistics</span><span class="cta-marquee-dot">&bull;</span>
+                <span>Ready to scale your fulfillment</span><span class="cta-marquee-dot">&bull;</span>
+                <span>Let's talk logistics</span><span class="cta-marquee-dot">&bull;</span>
+            </div>
+        </div>
+        <div class="cta-banner-content">
+            <h2>Your Next Order Should Ship Itself</h2>
+            <a href="contact.html" class="apex-btn apex-btn-white cta-banner-btn">
+                Get a Free Quote
+                <span class="arrow-icon-circle">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </span>
+            </a>
+        </div>
+    </section>
+
     <!-- SECTION 3: FOOTER -->
     <footer class="footer-block">
         <div class="footer-main-layout">
@@ -802,20 +1108,20 @@
             <div class="footer-nav-column" data-reveal="fade">
                 <h4>Links</h4>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                 </ul>
             </div>
 
             <div class="footer-nav-column" data-reveal="fade">
                 <h4>Socials</h4>
                 <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Linkedin</a></li>
-                    <li><a href="#">X</a></li>
-                    <li><a href="#">Instagram</a></li>
+                    <li><a href="404.html">Facebook</a></li>
+                    <li><a href="404.html">Linkedin</a></li>
+                    <li><a href="404.html">X</a></li>
+                    <li><a href="404.html">Instagram</a></li>
                 </ul>
             </div>
 
@@ -835,8 +1141,8 @@
 
         <div class="footer-legal-row">
             <div class="legal-links">
-                <a href="#">Privacy Policies</a>
-                <a href="#">Terms of use</a>
+                <a href="404.html">Privacy Policies</a>
+                <a href="404.html">Terms of use</a>
             </div>
             <div>
                 &copy;2026 Stackly. All rights reserved.
@@ -850,5 +1156,38 @@
     </button>
 
     <script src="script.js"></script>
+    <script>
+        const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach(item => {
+    const question = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
+
+    if (item.classList.contains("active")) {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+
+    question.addEventListener("click", () => {
+
+        faqItems.forEach(faq => {
+            const content = faq.querySelector(".faq-answer");
+
+            if (faq !== item) {
+                faq.classList.remove("active");
+                content.style.maxHeight = null;
+            }
+        });
+
+        item.classList.toggle("active");
+
+        if (item.classList.contains("active")) {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+        } else {
+            answer.style.maxHeight = null;
+        }
+
+    });
+});
+    </script>
 </body>
 </html>

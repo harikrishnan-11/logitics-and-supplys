@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Stackly Logistics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body class="page-shell">
+  <header class="header-nav-bar" id="siteHeader">
+    <div class="logo-box">
+      <a href="index.html">Stackly<span>.</span></a>
+    </div>
+    <ul class="nav-links-wrapper" id="navLinksWrapper" aria-label="Primary navigation">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="service.html" class="nav-link">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="login.html" class="header-action-btn">Login</a></li>
+    </ul>
+    <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    
+  </header>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+
+  <main>
+    <!-- HERO — unchanged -->
+    <section class="page-hero">
+      <div class="page-hero-grid">
+        <div>
+          <div class="section-badge">Contact</div>
+          <h1>Let’s talk about your next shipment strategy.</h1>
+          <p>Tell us what you need and our logistics team will help you map the right solution.</p>
+          <div class="page-hero-actions">
+            <a href="mailto:hello@stackly.com" class="inline-btn">Email Us</a>
+          </div>
+          <div class="hero-quickstats">
+            <div class="hero-quickstat"><b>&lt;1 day</b><span>Avg. response time</span></div>
+            <div class="hero-quickstat"><b>4</b><span>Global offices</span></div>
+            <div class="hero-quickstat"><b>4.9/5</b><span>Support rating</span></div>
+          </div>
+        </div>
+        <div class="contact-card" data-reveal="fade">
+          <img class="page-hero-image" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&q=80&w=1000" alt="Customer support and logistics contact desk" loading="lazy">
+          <h3>Reach us</h3>
+          <p>hello@stackly.com</p>
+          <p>+1 (555) 014-3210</p>
+          <p>120 Harbor Avenue, Chicago, IL</p>
+          <div class="hero-chip-row">
+            <span class="hero-chip">Live coordinator, not a bot</span>
+            <span class="hero-chip">Same-day quote turnaround</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REQUEST SHEET -->
+    <section class="sk-section contact-sheet-section contact-ink-section">
+      <span class="sk-eyebrow">Get In Touch</span>
+      <h2 class="sk-h2">Tell us what you're moving</h2>
+
+      <div class="sheet-columns">
+        <div class="sheet-note" data-reveal="fade">
+          <h3>What happens after you submit</h3>
+          <p>Every request routes straight to a logistics coordinator — not a queue.</p>
+          <ul>
+            <li>You'll hear back within one business day, usually sooner.</li>
+            <li>For quotes, we'll ask for volume and SKU details before pricing anything.</li>
+            <li>General questions get a direct answer, no sales hand-off required.</li>
+          </ul>
+        </div>
+
+        <div class="request-card" data-reveal="fade">
+          <div class="request-tabs">
+            <button class="request-tab-btn is-active" data-tab-target="pane-message" type="button">Send a Message</button>
+            <button class="request-tab-btn" data-tab-target="pane-quote" type="button">Request a Quote</button>
+          </div>
+
+          <div class="request-pane is-active" id="pane-message">
+            <form onsubmit="event.preventDefault();">
+              <input type="text" placeholder="Your Name">
+              <input type="email" placeholder="Email Address">
+              <textarea placeholder="Tell us about your logistics needs"></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+
+          <div class="request-pane" id="pane-quote">
+            <form onsubmit="event.preventDefault();">
+              <div class="form-row-twin">
+                <input type="text" placeholder="Monthly order volume">
+                <select>
+                  <option value="" disabled selected>Type of service</option>
+                  <option value="fulfillment">Standard Fulfillment</option>
+                  <option value="cross-border">Cross-Border Logistics</option>
+                  <option value="enterprise">Enterprise Scaled Network</option>
+                </select>
+              </div>
+              <div class="form-row-twin">
+                <select>
+                  <option value="" disabled selected>Pickup city</option>
+                  <option value="new-york">New York, USA</option>
+                  <option value="rotterdam">Rotterdam, Netherlands</option>
+                  <option value="singapore">Singapore</option>
+                </select>
+                <select>
+                  <option value="" disabled selected>Delivery city</option>
+                  <option value="los-angeles">Los Angeles, USA</option>
+                  <option value="london">London, UK</option>
+                  <option value="tokyo">Tokyo, Japan</option>
+                </select>
+              </div>
+              <input type="email" placeholder="Work email">
+              <button type="submit">Send Request</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOURS + LOCATIONS -->
+    <section class="sk-section" style="padding-top:0;">
+      <span class="sk-eyebrow">Availability</span>
+      <h2 class="sk-h2">When and where to find us</h2>
+
+      <div class="hours-locations-grid">
+        <div data-reveal="fade">
+          <div class="hours-table">
+            <div class="hours-row">
+              <span>Mon – Fri</span>
+              <span class="status-dot">Open, 8:00 AM – 6:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span>Saturday</span>
+              <span class="status-dot is-limited">Limited, urgent freight only</span>
+            </div>
+            <div class="hours-row">
+              <span>Sunday</span>
+              <span class="status-dot is-limited">Escalations only</span>
+            </div>
+            <div class="hours-row">
+              <span>Response time</span>
+              <span class="status-dot">Under 1 business day</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="locations-grid" data-reveal="fade">
+          <div class="location-card">
+            <h4>Chicago HQ</h4>
+            <p>120 Harbor Avenue, Chicago, IL</p>
+            <span>Headquarters</span>
+          </div>
+          <div class="location-card">
+            <h4>Rotterdam Hub</h4>
+            <p>Maasvlakte Logistics Park, NL</p>
+            <span>Cross-border</span>
+          </div>
+          <div class="location-card">
+            <h4>Singapore Facility</h4>
+            <p>Jurong Distribution Center, SG</p>
+            <span>APAC coverage</span>
+          </div>
+          <div class="location-card">
+            <h4>Austin Warehouse</h4>
+            <p>East Riverside Fulfillment Center, TX</p>
+            <span>Fast pick/pack</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUPPORT CHANNELS -->
+    <section class="sk-section" style="padding-top:0;">
+      <span class="sk-eyebrow">Ways To Reach Us</span>
+      <h2 class="sk-h2">Pick whichever is fastest for you</h2>
+
+      <div class="support-channels-grid" data-reveal="fade">
+        <div class="support-channel-card">
+          <span class="channel-emoji"><i class="fa-solid fa-envelope"></i></span>
+          <h4>Email</h4>
+          <p>Best for detailed requests, quotes, or anything you'd like documented.</p>
+          <span class="channel-time">Replies within 1 business day</span>
+        </div>
+        <div class="support-channel-card">
+          <span class="channel-emoji"><i class="fa-solid fa-phone"></i></span>
+          <h4>Phone</h4>
+          <p>Best for urgent freight issues or anything that needs a real-time decision.</p>
+          <span class="channel-time">8 AM – 6 PM, Mon–Fri</span>
+        </div>
+        <div class="support-channel-card">
+          <span class="channel-emoji"><i class="fa-solid fa-comments"></i></span>
+          <h4>Account Chat</h4>
+          <p>Best for existing clients checking shipment status or account questions.</p>
+          <span class="channel-time">Avg. reply under 10 minutes</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MINI FAQ -->
+    <section class="sk-section faq-mini-section" style="padding-top:0;">
+      <div class="faq-mini-header">
+        <span class="sk-eyebrow">Before You Write In</span>
+        <h2 class="sk-h2">Quick answers to common questions</h2>
+      </div>
+
+      <div class="faq-mini" data-reveal="fade">
+        <div class="faq-mini-item is-open">
+          <button class="faq-mini-q" type="button">
+            <span>How fast will I hear back?</span>
+            <span class="faq-mini-icon">+</span>
+          </button>
+          <div class="faq-mini-a">
+            <p>Most messages get a reply within one business day. Quote requests are often faster once we have your volume details.</p>
+          </div>
+        </div>
+        <div class="faq-mini-item">
+          <button class="faq-mini-q" type="button">
+            <span>Do I need an account to request a quote?</span>
+            <span class="faq-mini-icon">+</span>
+          </button>
+          <div class="faq-mini-a">
+            <p>No — the quote form works for anyone. We'll only ask you to create an account once you're ready to onboard.</p>
+          </div>
+        </div>
+        <div class="faq-mini-item">
+          <button class="faq-mini-q" type="button">
+            <span>Can I talk to a coordinator directly?</span>
+            <span class="faq-mini-icon">+</span>
+          </button>
+          <div class="faq-mini-a">
+            <p>Yes. Every message routes to a real logistics coordinator — phone and account chat connect you the fastest.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="sk-section" style="padding-top:0;">
+      <div class="quote-banner" data-reveal="fade">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150" alt="Operations lead at a partner brand" loading="lazy">
+        <div>
+          <blockquote>"We emailed at 9 PM about a delayed shipment and had a coordinator working on it before we logged off."</blockquote>
+          <cite>James Whitfield — Ops Lead, HomeGlow</cite>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="sk-section sk-cta-section">
+      <div class="cta-panel" data-reveal="fade">
+        <h2>Have a shipment question right now?</h2>
+        <div class="page-hero-actions">
+          <a href="tel:+15550143210" class="inline-btn">Call Us</a>
+          <a href="mailto:hello@stackly.com" class="inline-btn-dark">Email Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-block">
+    <div class="footer-main-layout">
+      <div class="footer-brand-column" data-reveal="fade">
+        <div class="logo-lockup">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 19L19 5M19 5H9M19 5V15" stroke="#F2A93B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Stackly
+        </div>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Socials</h4>
+        <ul>
+          <li><a href="404.html">Facebook</a></li>
+          <li><a href="404.html">Linkedin</a></li>
+          <li><a href="404.html">X</a></li>
+          <li><a href="404.html">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column newsletter-wrapper" data-reveal="fade">
+        <h4>Subscribe Newsletter</h4>
+        <p>Sign up to our weekly newsletter to get the latest updates.</p>
+        <div class="newsletter-field-box">
+          <input type="email" placeholder="Enter your email" required>
+          <button class="btn-news-submit" aria-label="Submit email address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal-row">
+      <div class="legal-links">
+        <a href="404.html">Privacy Policies</a>
+        <a href="404.html">Terms of use</a>
+      </div>
+      <div>©2026 Stackly. All rights reserved.</div>
+    </div>
+  </footer>
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+  <script src="script.js"></script>
+  <script>
+    document.querySelectorAll('.request-tab-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.request-tab-btn').forEach(function (b) { b.classList.remove('is-active'); });
+        document.querySelectorAll('.request-pane').forEach(function (p) { p.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        document.getElementById(btn.dataset.tabTarget).classList.add('is-active');
+      });
+    });
+    document.querySelectorAll('.faq-mini-q').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        btn.closest('.faq-mini-item').classList.toggle('is-open');
+      });
+    });
+  </script>
+</body>
+</html>

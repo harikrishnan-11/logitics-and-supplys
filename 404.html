@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 | Page Not Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body class="page-shell">
+  <header class="header-nav-bar" id="siteHeader">
+    <div class="logo-box">
+      <a href="index.html">Stackly<span>.</span></a>
+    </div>
+    <ul class="nav-links-wrapper" id="navLinksWrapper" aria-label="Primary navigation">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="service.html" class="nav-link">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="login.html" class="header-action-btn">Login</a></li>
+    </ul>
+    <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Close navigation menu">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </header>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-grid">
+        <div>
+          <div class="section-badge">404 Error</div>
+          <h1>The page you’re looking for has moved.</h1>
+          <p>This link may be outdated or the page is temporarily unavailable. Please return to the homepage or choose a live page from the navigation.</p>
+          <div class="page-hero-actions">
+            <a href="index.html" class="inline-btn">Back Home</a>
+            <a href="contact.html" class="inline-btn-dark">Contact Support</a>
+          </div>
+        </div>
+        <div class="page-hero-card" data-reveal="fade">
+          <img class="page-hero-image" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000" alt="Missing page illustration" loading="lazy">
+          <div class="hero-badges">
+            <span><i class="fa-solid fa-compass"></i> Route unavailable</span>
+            <span><i class="fa-solid fa-location-dot"></i> Redirected safely</span>
+            <span><i class="fa-solid fa-magnifying-glass"></i> Still exploring</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-block">
+    <div class="footer-main-layout">
+      <div class="footer-brand-column" data-reveal="fade">
+        <div class="logo-lockup">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 19L19 5M19 5H9M19 5V15" stroke="#F2A93B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Stackly
+        </div>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Socials</h4>
+        <ul>
+          <li><a href="404.html">Facebook</a></li>
+          <li><a href="404.html">Linkedin</a></li>
+          <li><a href="404.html">X</a></li>
+          <li><a href="404.html">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column newsletter-wrapper" data-reveal="fade">
+        <h4>Subscribe Newsletter</h4>
+        <p>Sign up to our weekly newsletter to get the latest updates.</p>
+        <div class="newsletter-field-box">
+          <input type="email" placeholder="Enter your email" required />
+          <button class="btn-news-submit" aria-label="Submit email address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal-row">
+      <div class="legal-links">
+        <a href="404.html">Privacy Policies</a>
+        <a href="404.html">Terms of use</a>
+      </div>
+      <div>©2026 Stackly. All rights reserved.</div>
+    </div>
+  </footer>
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+  <script src="script.js"></script>
+</body>
+</html>

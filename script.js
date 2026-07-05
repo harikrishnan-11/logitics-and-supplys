@@ -1,6 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ======================================================================
+       0. SMOOTH ANCHOR NAVIGATION
+       ====================================================================== */
+    const smoothScrollToTarget = (targetId, offset = 96) => {
+        const targetElement = document.getElementById(targetId);
+        if (!targetElement) return;
+
+        const topPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: topPosition, behavior: 'smooth' });
+    };
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (event) => {
+            const href = link.getAttribute('href');
+            if (!href || href === '#') return;
+
+            const targetId = href.substring(1);
+            if (!targetId) return;
+
+            event.preventDefault();
+            smoothScrollToTarget(targetId);
+            history.pushState(null, '', href);
+        });
+    });
+
+    if (window.location.hash) {
+        const targetId = window.location.hash.substring(1);
+        if (targetId) {
+            setTimeout(() => smoothScrollToTarget(targetId), 120);
+        }
+    }
+
+    /* ======================================================================
        1. STEP HOVER -> IMAGE SWAP (How It Works)
        ====================================================================== */
     const actionableRows = document.querySelectorAll('.step-interactive-row');
@@ -181,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('sending');
             btn.textContent = 'Sending…';
             setTimeout(() => {
-                btn.textContent = 'Request Sent ✓';
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> Request Sent';
                 setTimeout(() => {
                     btn.classList.remove('sending');
                     btn.textContent = originalLabel;
@@ -196,18 +228,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const burgerMenu = document.getElementById('mobileHamburger');
     const navigationDrawer = document.getElementById('navLinksWrapper');
     const navBackdrop = document.getElementById('mobileNavBackdrop');
+    const menuCloseBtn = document.getElementById('mobileMenuClose');
     const nestedDropdownTriggers = document.querySelectorAll('.nav-item-dropdown > .nav-link');
 
     function closeMobileMenu() {
+        if (!burgerMenu || !navigationDrawer || !navBackdrop) return;
         burgerMenu.classList.remove('toggle-active');
         navigationDrawer.classList.remove('mobile-menu-open');
         navBackdrop.classList.remove('visible');
+        burgerMenu.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
     }
 
     function toggleMobileMenu() {
-        burgerMenu.classList.toggle('toggle-active');
-        navigationDrawer.classList.toggle('mobile-menu-open');
-        navBackdrop.classList.toggle('visible');
+        if (!burgerMenu || !navigationDrawer || !navBackdrop) return;
+        const isOpening = !navigationDrawer.classList.contains('mobile-menu-open');
+        burgerMenu.classList.toggle('toggle-active', isOpening);
+        navigationDrawer.classList.toggle('mobile-menu-open', isOpening);
+        navBackdrop.classList.toggle('visible', isOpening);
+        burgerMenu.setAttribute('aria-expanded', String(isOpening));
+        document.body.style.overflow = isOpening ? 'hidden' : '';
     }
 
     if (burgerMenu && navigationDrawer && navBackdrop) {
@@ -219,6 +259,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         navBackdrop.addEventListener('click', closeMobileMenu);
+
+        if (menuCloseBtn) {
+            menuCloseBtn.addEventListener('click', closeMobileMenu);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navigationDrawer.classList.contains('mobile-menu-open')) {
+                closeMobileMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 912) {
+                closeMobileMenu();
+            }
+        });
 
         navigationDrawer.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {

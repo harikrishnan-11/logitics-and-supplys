@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Stackly Logistics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="pages.css" />
+</head>
+<body class="page-shell">
+  <header class="header-nav-bar" id="siteHeader">
+    <div class="logo-box">
+      <a href="index.html">Stackly<span>.</span></a>
+    </div>
+    <ul class="nav-links-wrapper" id="navLinksWrapper" aria-label="Primary navigation">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="service.html" class="nav-link">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="login.html" class="header-action-btn">Login</a></li>
+    </ul>
+    <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+   
+  </header>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+
+  <main>
+    <!-- HERO — unchanged -->
+    <section class="page-hero">
+      <div class="page-hero-grid">
+        <div>
+          <div class="section-badge">Login</div>
+          <h1>Welcome back to your logistics dashboard.</h1>
+          <p>Access tracking, shipments, and account updates from one secure place.</p>
+          <div class="hero-quickstats">
+            <div class="hero-quickstat"><b>500+</b><span>Brands onboarded</span></div>
+            <div class="hero-quickstat"><b>99.9%</b><span>Dashboard uptime</span></div>
+            <div class="hero-quickstat"><b>24/7</b><span>Live shipment data</span></div>
+          </div>
+          <div class="hero-chip-row">
+            <span class="hero-chip">Two-factor login available</span>
+            <span class="hero-chip">Role-based access</span>
+          </div>
+        </div>
+        <div class="auth-card" data-reveal="fade">
+          <img class="page-hero-image" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" alt="Secure logistics account access" loading="lazy">
+          <h3>Sign in</h3>
+          <form class="form-stack">
+            <input type="email" placeholder="Email address" required />
+            <input type="password" placeholder="Password" required />
+            <label class="auth-select-row">
+              <span>Role</span>
+              <select name="role">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+            </label>
+            <button class="inline-btn" type="submit">Login</button>
+          </form>
+          <p>Don’t have an account? <a href="signup.html">Create one</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE DASHBOARD PREVIEW -->
+    <section class="sk-section sk-section--dark login-preview-section">
+      <span class="sk-eyebrow">Behind The Login</span>
+      <h2 class="sk-h2">A live look at what's waiting for you</h2>
+      <p class="sk-lede">Same control tower your ops team already checks every morning — throughput, exceptions, and the shipment feed, all in one screen.</p>
+
+      <div class="preview-shell" data-reveal="fade">
+        <div class="preview-metrics">
+          <div class="preview-metric-row">
+            <div class="preview-metric-head"><span>Order accuracy</span><b>99.6%</b></div>
+            <div class="preview-bar-track"><div class="preview-bar-fill" style="width:99.6%"></div></div>
+          </div>
+          <div class="preview-metric-row">
+            <div class="preview-metric-head"><span>Same-day dispatch</span><b>94%</b></div>
+            <div class="preview-bar-track"><div class="preview-bar-fill" style="width:94%"></div></div>
+          </div>
+          <div class="preview-metric-row">
+            <div class="preview-metric-head"><span>Dock-to-stock ≤ 24h</span><b>88%</b></div>
+            <div class="preview-bar-track"><div class="preview-bar-fill" style="width:88%"></div></div>
+          </div>
+        </div>
+        <div class="preview-feed">
+          <div class="preview-feed-label">Shipment feed</div>
+          <div class="preview-feed-row"><span>#48211</span><b>Cleared customs — Rotterdam</b></div>
+          <div class="preview-feed-row"><span>#48198</span><b>Picked & packed — Austin</b></div>
+          <div class="preview-feed-row"><span>#48176</span><b>Out for delivery — Chicago</b></div>
+          <div class="preview-feed-row"><span>#48154</span><b>Delivered — signature captured</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section class="sk-section" style="padding-top:0;">
+      <span class="sk-eyebrow">Once You're In</span>
+      <h2 class="sk-h2">Everything runs from one screen</h2>
+
+      <div class="capability-grid" data-reveal="fade">
+        <div class="capability-card">
+          <span class="cap-icon"><i class="fa-solid fa-box"></i></span>
+          <h4>Live shipments</h4>
+          <p>Monitor active deliveries and confirm progress at a glance.</p>
+        </div>
+        <div class="capability-card">
+          <span class="cap-icon"><i class="fa-solid fa-file-lines"></i></span>
+          <h4>Documents</h4>
+          <p>Invoices, packing slips, and contracts, all in one place.</p>
+        </div>
+        <div class="capability-card">
+          <span class="cap-icon"><i class="fa-solid fa-bell"></i></span>
+          <h4>Notifications</h4>
+          <p>Get alerted the moment a delivery moves, delays, or needs action.</p>
+        </div>
+        <div class="capability-card">
+          <span class="cap-icon"><i class="fa-solid fa-chart-column"></i></span>
+          <h4>Quick reports</h4>
+          <p>Review throughput, exceptions, and service trends in seconds.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONBOARDING STEPS -->
+    <section class="sk-section" style="padding-top:0;">
+      <span class="sk-eyebrow">New Here?</span>
+      <h2 class="sk-h2">Three steps to your first shipment</h2>
+
+      <div class="onboarding-steps" data-reveal="fade">
+        <div class="onboarding-step">
+          <span class="step-num">01</span>
+          <h4>Create your account</h4>
+          <p>Set up your profile and tell us what you're shipping and where.</p>
+        </div>
+        <div class="onboarding-step">
+          <span class="step-num">02</span>
+          <h4>Connect your store</h4>
+          <p>Sync Shopify, WooCommerce, or Amazon in a few clicks.</p>
+        </div>
+        <div class="onboarding-step">
+          <span class="step-num">03</span>
+          <h4>Send inventory in</h4>
+          <p>Ship stock to your nearest node and start dispatching orders.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST CHECKLIST -->
+    <section class="sk-section login-trust-section login-trust-surface">
+      <div class="trust-columns">
+        <div>
+          <span class="sk-eyebrow">Account Security</span>
+          <h2 class="sk-h2">Signing in stays yours to control</h2>
+          <p class="sk-lede">Access is scoped, logged, and easy to revoke — so the right people see the right shipments, nothing more.</p>
+        </div>
+
+        <div class="trust-list" data-reveal="fade">
+          <div class="trust-item">
+            <span class="trust-check"><i class="fa-solid fa-check"></i></span>
+            <div>
+              <h5>Role-based access</h5>
+              <p>Limit teammates to the warehouses or order types they actually manage.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check"><i class="fa-solid fa-check"></i></span>
+            <div>
+              <h5>Session activity log</h5>
+              <p>See every login and export, with device and location on record.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check"><i class="fa-solid fa-check"></i></span>
+            <div>
+              <h5>Two-factor login</h5>
+              <p>Optional now, required automatically once your account reaches Growth tier.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-check"><i class="fa-solid fa-check"></i></span>
+            <div>
+              <h5>One-click revoke</h5>
+              <p>Remove a teammate's access instantly — no waiting on a support ticket.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="sk-section" style="padding-top:0;">
+      <div class="quote-banner" data-reveal="fade">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150" alt="Marcus Webb" loading="lazy">
+        <div>
+          <blockquote>"We were live and shipping from the dashboard within two weeks of signing up — no back-and-forth needed."</blockquote>
+          <cite>Marcus Webb — VP Network Ops, CircuitWorks</cite>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="sk-section sk-cta-section">
+      <div class="cta-panel" data-reveal="fade">
+        <h2>Don't have an account yet?</h2>
+        <div class="page-hero-actions">
+          <a href="signup.html" class="inline-btn">Create Account</a>
+          <a href="contact.html" class="inline-btn-dark">Talk to Sales First</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-block">
+    <div class="footer-main-layout">
+      <div class="footer-brand-column" data-reveal="fade">
+        <div class="logo-lockup">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 19L19 5M19 5H9M19 5V15" stroke="#F2A93B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Stackly
+        </div>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Socials</h4>
+        <ul>
+          <li><a href="404.html">Facebook</a></li>
+          <li><a href="404.html">Linkedin</a></li>
+          <li><a href="404.html">X</a></li>
+          <li><a href="404.html">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column newsletter-wrapper" data-reveal="fade">
+        <h4>Subscribe Newsletter</h4>
+        <p>Sign up to our weekly newsletter to get the latest updates.</p>
+        <div class="newsletter-field-box">
+          <input type="email" placeholder="Enter your email" required>
+          <button class="btn-news-submit" aria-label="Submit email address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal-row">
+      <div class="legal-links">
+        <a href="404.html">Privacy Policies</a>
+        <a href="404.html">Terms of use</a>
+      </div>
+      <div>©2026 Stackly. All rights reserved.</div>
+    </div>
+  </footer>
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+  <script src="script.js"></script>
+</body>
+</html>

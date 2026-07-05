@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up | Stackly Logistics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-shell">
+  <header class="header-nav-bar" id="siteHeader">
+    <div class="logo-box">
+      <a href="index.html">Stackly<span>.</span></a>
+    </div>
+    <ul class="nav-links-wrapper" id="navLinksWrapper" aria-label="Primary navigation">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="service.html" class="nav-link">Services</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="login.html" class="header-action-btn">Login</a></li>
+    </ul>
+    <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Close navigation menu">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </header>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-grid">
+        <div>
+          <div class="section-badge">Sign Up</div>
+          <h1>Create your Stackly account and simplify growth.</h1>
+          <p>Start with a free consultation and unlock smarter logistics planning tools.</p>
+        </div>
+        <div class="auth-card" data-reveal="fade">
+          <img class="page-hero-image" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" alt="Account setup for logistics management" loading="lazy">
+          <h3>Create account</h3>
+          <form class="form-stack">
+            <input type="text" placeholder="Full name" required />
+            <input type="email" placeholder="Business email" required />
+            <input type="password" placeholder="Create password" required />
+            <label class="auth-select-row">
+              <span>Account role</span>
+              <select name="role">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+            </label>
+            <label class="auth-select-row">
+              <span>Company size</span>
+              <select name="companySize">
+                <option value="1-10">1–10 employees</option>
+                <option value="11-50">11–50 employees</option>
+                <option value="51+">51+ employees</option>
+              </select>
+            </label>
+            <button class="inline-btn" type="submit">Create Account</button>
+          </form>
+          <p>Already registered? <a href="login.html">Login here</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="section-card section-card--visual" data-reveal="fade">
+        <div class="visual-panel">
+          <img class="section-media" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000" alt="Onboarding team helping a new client" loading="lazy">
+        </div>
+        <div>
+          <div class="section-title">
+            <h2>What you get on day one</h2>
+            <span class="section-badge">Member Benefits</span>
+          </div>
+          <div class="dashboard-grid">
+            <article class="dashboard-item">
+              <h3>Priority support</h3>
+              <p>Access our team faster when operations need attention.</p>
+            </article>
+            <article class="dashboard-item">
+              <h3>Shared visibility</h3>
+              <p>Keep your team aligned with the same shipment and order data.</p>
+            </article>
+            <article class="dashboard-item">
+              <h3>Tailored onboarding</h3>
+              <p>We help you configure the workflow that fits your business.</p>
+            </article>
+            <article class="dashboard-item">
+              <h3>Faster launch</h3>
+              <p>Get up and running quickly with a structure that feels simple from day one.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="section-card section-card--visual" data-reveal="fade">
+        <div>
+          <div class="section-title">
+            <h2>Start with a free consultation</h2>
+            <span class="section-badge">Get Started</span>
+          </div>
+          <p>We’ll help you set up the right workflow and make your first steps feel effortless.</p>
+          <div class="feature-pill-row">
+            <span class="feature-pill">Fast kickoff</span>
+            <span class="feature-pill">Tailored guidance</span>
+            <span class="feature-pill">Growth planning</span>
+          </div>
+        </div>
+        <div class="visual-panel">
+          <img class="section-media" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1000" alt="Consultation meeting for new logistics accounts" loading="lazy">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-block">
+    <div class="footer-main-layout">
+      <div class="footer-brand-column" data-reveal="fade">
+        <div class="logo-lockup">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 19L19 5M19 5H9M19 5V15" stroke="#F2A93B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Stackly
+        </div>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column" data-reveal="fade">
+        <h4>Socials</h4>
+        <ul>
+          <li><a href="404.html">Facebook</a></li>
+          <li><a href="404.html">Linkedin</a></li>
+          <li><a href="404.html">X</a></li>
+          <li><a href="404.html">Instagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-column newsletter-wrapper" data-reveal="fade">
+        <h4>Subscribe Newsletter</h4>
+        <p>Sign up to our weekly newsletter to get the latest updates.</p>
+        <div class="newsletter-field-box">
+          <input type="email" placeholder="Enter your email" required>
+          <button class="btn-news-submit" aria-label="Submit email address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal-row">
+      <div class="legal-links">
+        <a href="404.html">Privacy Policies</a>
+        <a href="404.html">Terms of use</a>
+      </div>
+      <div>©2026 Stackly. All rights reserved.</div>
+    </div>
+  </footer>
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+  <script src="script.js"></script>
+</body>
+</html>
