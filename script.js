@@ -1,3 +1,31 @@
+
+const hum = document.getElementById("hamburger");
+const mob = document.querySelector(".mobile-nav");
+ 
+hum.addEventListener("click", () => {
+    hum.classList.toggle("active");
+    mob.classList.toggle("active");
+});
+
+
+
+
+window.togglePasswordVisibility = function(targetId, button) {
+    const input = document.getElementById(targetId);
+    if (!input || !button) return;
+
+    const isPassword = input.type === 'password';
+    input.type = isPassword ? 'text' : 'password';
+    button.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+
+    const icon = button.querySelector('svg');
+    if (icon) {
+        icon.innerHTML = isPassword
+            ? '<path d="M3 3l18 18"></path><path d="M10.6 10.6A3 3 0 0 0 13.4 13.4"></path><path d="M9.9 5.1A10.8 10.8 0 0 1 12 5c7 0 10 7 10 7a19.2 19.2 0 0 1-3.7 4.6"></path><path d="M6.3 6.3A19.2 19.2 0 0 0 2 12s3.5 7 10 7a10.8 10.8 0 0 0 2.1-.2"></path>'
+            : '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle>';
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ======================================================================
@@ -203,97 +231,128 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const quoteForm = document.getElementById('quoteForm');
-    if (quoteForm) {
-        quoteForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = quoteForm.querySelector('.btn-submit-form');
-            if (!btn || btn.classList.contains('sending')) return;
-            const originalLabel = btn.textContent;
-            btn.classList.add('sending');
-            btn.textContent = 'Sending…';
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fa-solid fa-check"></i> Request Sent';
-                setTimeout(() => {
-                    btn.classList.remove('sending');
-                    btn.textContent = originalLabel;
-                }, 1800);
-            }, 900);
-        });
-    }
-
-    /* ======================================================================
-       6. MOBILE NAVBAR OPEN / CLOSE
-       ====================================================================== */
-    const burgerMenu = document.getElementById('mobileHamburger');
-    const navigationDrawer = document.getElementById('navLinksWrapper');
-    const navBackdrop = document.getElementById('mobileNavBackdrop');
-    const menuCloseBtn = document.getElementById('mobileMenuClose');
-    const nestedDropdownTriggers = document.querySelectorAll('.nav-item-dropdown > .nav-link');
-
-    function closeMobileMenu() {
-        if (!burgerMenu || !navigationDrawer || !navBackdrop) return;
-        burgerMenu.classList.remove('toggle-active');
-        navigationDrawer.classList.remove('mobile-menu-open');
-        navBackdrop.classList.remove('visible');
-        burgerMenu.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-    }
-
-    function toggleMobileMenu() {
-        if (!burgerMenu || !navigationDrawer || !navBackdrop) return;
-        const isOpening = !navigationDrawer.classList.contains('mobile-menu-open');
-        burgerMenu.classList.toggle('toggle-active', isOpening);
-        navigationDrawer.classList.toggle('mobile-menu-open', isOpening);
-        navBackdrop.classList.toggle('visible', isOpening);
-        burgerMenu.setAttribute('aria-expanded', String(isOpening));
-        document.body.style.overflow = isOpening ? 'hidden' : '';
-    }
-
-    if (burgerMenu && navigationDrawer && navBackdrop) {
-        burgerMenu.addEventListener('click', toggleMobileMenu);
-        burgerMenu.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleMobileMenu();
-            }
-        });
-        navBackdrop.addEventListener('click', closeMobileMenu);
-
-        if (menuCloseBtn) {
-            menuCloseBtn.addEventListener('click', closeMobileMenu);
+    function showFieldError(input, message) {
+        const errorElement = document.querySelector(`[data-error-for="${input.id}"]`);
+        if (errorElement) {
+            errorElement.textContent = message;
         }
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navigationDrawer.classList.contains('mobile-menu-open')) {
-                closeMobileMenu();
+        input.classList.toggle('is-invalid', Boolean(message));
+        input.classList.toggle('is-valid', !message && input.value.trim() !== '');
+        input.setAttribute('aria-invalid', String(Boolean(message)));
+    }
+
+    function clearFieldError(input) {
+        showFieldError(input, '');
+    }
+
+    function validateField(input) {
+        const value = input.value.trim();
+        const validator = input.dataset.validate;
+
+        if (!input.required && !value) {
+            clearFieldError(input);
+            return true;
+        }
+
+        if (!value) {
+            showFieldError(input, 'This field is required.');
+            return false;
+        }
+
+        let message = '';
+        if (validator === 'name') {
+            message = /^[A-Za-z\s]+$/.test(value) ? '' : 'Name should contain letters only.';
+        } else if (validator === 'email') {
+            message = /^[^\s@]+@[^\s@]+\.(com|in)$/i.test(value) ? '' : 'Please enter a valid email ending with .com or .in.';
+        } else if (validator === 'phone') {
+            message = /^\d{10}$/.test(value) ? '' : 'Phone number must be 10 digits.';
+        } else if (validator === 'password') {
+            message = value.length >= 8 ? '' : 'Password must be at least 8 characters long.';
+        } else if (validator === 'confirmPassword') {
+            const passwordField = input.closest('form')?.querySelector('input[name="password"]');
+            const passwordValue = passwordField ? passwordField.value.trim() : '';
+            message = value && passwordValue && value === passwordValue ? '' : 'Passwords do not match.';
+        } else if (validator === 'orderId') {
+            message = value.length >= 3 ? '' : 'Order ID must be at least 3 characters.';
+        } else if (validator === 'region' || validator === 'facility') {
+            message = value.length >= 3 ? '' : 'Please enter at least 3 characters.';
+        }
+
+        showFieldError(input, message);
+        return !message;
+    }
+
+    function validateForm(form) {
+        let isValid = true;
+        form.querySelectorAll('input, textarea, select').forEach(field => {
+            if (field.dataset.validate || field.required) {
+                if (!validateField(field)) {
+                    isValid = false;
+                }
             }
         });
+        return isValid;
+    }
 
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 912) {
-                closeMobileMenu();
-            }
-        });
+    function initFormValidation(form) {
+        if (!form) return;
 
-        navigationDrawer.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 912 && !link.parentElement.classList.contains('nav-item-dropdown')) {
-                    closeMobileMenu();
+        form.setAttribute('novalidate', 'true');
+
+        const fields = form.querySelectorAll('input, textarea, select');
+        fields.forEach(field => {
+            field.addEventListener('blur', () => validateField(field));
+            field.addEventListener('input', () => {
+                if (field.classList.contains('is-invalid') || field.value.trim()) {
+                    validateField(field);
                 }
             });
+            field.addEventListener('change', () => validateField(field));
+        });
+
+        form.addEventListener('submit', (event) => {
+            const isValid = validateForm(form);
+            if (!isValid) {
+                event.preventDefault();
+                return;
+            }
+
+            if (form.id === 'loginForm') {
+                event.preventDefault();
+                const roleSelect = form.querySelector('select[name="role"]');
+                const selectedRole = roleSelect?.value === 'admin' ? 'admin' : 'user';
+                window.location.href = selectedRole === 'admin' ? 'admin.html' : 'user.html';
+                return;
+            }
+
+            if (form.id === 'heroTrackingForm' || form.id === 'heroWarehouseForm') {
+                event.preventDefault();
+                window.location.href = '404.html';
+                return;
+            }
+
+            if (form.id === 'quoteForm') {
+                event.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                if (!btn || btn.classList.contains('sending')) return;
+                const originalLabel = btn.textContent;
+                btn.classList.add('sending');
+                btn.textContent = 'Sending…';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Request Sent';
+                    setTimeout(() => {
+                        btn.classList.remove('sending');
+                        btn.textContent = originalLabel;
+                    }, 1800);
+                }, 900);
+            }
         });
     }
 
-    nestedDropdownTriggers.forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            if (window.innerWidth <= 912) {
-                e.preventDefault();
-                const rootParentLi = trigger.parentElement;
-                rootParentLi.classList.toggle('mobile-dropdown-active');
-            }
-        });
-    });
+    document.querySelectorAll('form').forEach(initFormValidation);
+
+
 
     /* ======================================================================
        7. STICKY HEADER — SHRINK + SOLIDIFY ON SCROLL

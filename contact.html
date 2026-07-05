@@ -12,24 +12,44 @@
   <link rel="stylesheet" href="pages.css" />
 </head>
 <body class="page-shell">
-  <header class="header-nav-bar" id="siteHeader">
-    <div class="logo-box">
-      <a href="index.html">Stackly<span>.</span></a>
-    </div>
-    <ul class="nav-links-wrapper" id="navLinksWrapper" aria-label="Primary navigation">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="about.html" class="nav-link">About</a></li>
-      <li><a href="service.html" class="nav-link">Services</a></li>
-      <li><a href="blog.html" class="nav-link">Blog</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-      <li><a href="login.html" class="header-action-btn">Login</a></li>
-    </ul>
-    <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
-      <span></span><span></span><span></span>
-    </div>
-    
-  </header>
-  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+ <nav class="nav-bar">
+            <div class="logo-box">
+                <img src="./src/logo/Untitled design-compressed (1).webp" alt="">
+            </div>
+            <div class="nav-links ">
+                <a href="./home.html">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./service.html">Service</a>
+                <a href="./blog.html">Blog</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+ 
+            </div>
+            <div class="login-btn">
+                <a href="./login.html">
+                    <Button title="Login to Tract Your order and History">Login</Button>
+                </a>
+            </div>
+        </nav>
+        <div class="mobile-nav">
+            <div class="mobile-menu">
+                 <a href="./home.html">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./service.html">Service</a>
+                <a href="./blog.html">Blog</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+            <div class="mobile-login-btn" id="mobile-login-btn">
+                <a href="./login.html">
+                    <Button title="Login to Tract Your order and History">Login</Button>
+                </a>
+            </div>
+        </div>
+
 
   <main>
     <!-- HERO — unchanged -->
@@ -85,40 +105,78 @@
           </div>
 
           <div class="request-pane is-active" id="pane-message">
-            <form onsubmit="event.preventDefault();">
-              <input type="text" placeholder="Your Name">
-              <input type="email" placeholder="Email Address">
-              <textarea placeholder="Tell us about your logistics needs"></textarea>
+            <form class="form-stack" id="messageForm" novalidate>
+              <div class="form-field">
+                <input type="text" id="messageName" name="name" placeholder="Your Name" data-validate="name" required>
+                <span class="field-error" data-error-for="messageName"></span>
+              </div>
+              <div class="form-field">
+                <input type="email" id="messageEmail" name="email" placeholder="Email Address" data-validate="email" required>
+                <span class="field-error" data-error-for="messageEmail"></span>
+              </div>
+              <div class="form-field">
+                <input type="tel" id="messagePhone" name="phone" placeholder="Phone Number" data-validate="phone" required>
+                <span class="field-error" data-error-for="messagePhone"></span>
+              </div>
+              <div class="form-field">
+                <textarea id="messageDetails" name="details" placeholder="Tell us about your logistics needs (max 300)" maxlength="300" required></textarea>
+                <span class="field-error" data-error-for="messageDetails"></span>
+              </div>
               <button type="submit">Send Message</button>
             </form>
           </div>
 
           <div class="request-pane" id="pane-quote">
-            <form onsubmit="event.preventDefault();">
+            <form class="form-stack" id="quoteForm" novalidate>
               <div class="form-row-twin">
-                <input type="text" placeholder="Monthly order volume">
-                <select>
-                  <option value="" disabled selected>Type of service</option>
-                  <option value="fulfillment">Standard Fulfillment</option>
-                  <option value="cross-border">Cross-Border Logistics</option>
-                  <option value="enterprise">Enterprise Scaled Network</option>
-                </select>
+                <div class="form-field">
+                  <input type="text" id="quoteName" name="name" placeholder="Your Name" data-validate="name" required>
+                  <span class="field-error" data-error-for="quoteName"></span>
+                </div>
+                <div class="form-field">
+                  <input type="text" id="quoteVolume" name="volume" placeholder="Monthly order volume" required>
+                  <span class="field-error" data-error-for="quoteVolume"></span>
+                </div>
               </div>
               <div class="form-row-twin">
-                <select>
-                  <option value="" disabled selected>Pickup city</option>
-                  <option value="new-york">New York, USA</option>
-                  <option value="rotterdam">Rotterdam, Netherlands</option>
-                  <option value="singapore">Singapore</option>
-                </select>
-                <select>
-                  <option value="" disabled selected>Delivery city</option>
-                  <option value="los-angeles">Los Angeles, USA</option>
-                  <option value="london">London, UK</option>
-                  <option value="tokyo">Tokyo, Japan</option>
-                </select>
+                <div class="form-field">
+                  <select id="quoteService" name="service" required>
+                    <option value="" disabled selected>Type of service</option>
+                    <option value="fulfillment">Standard Fulfillment</option>
+                    <option value="cross-border">Cross-Border Logistics</option>
+                    <option value="enterprise">Enterprise Scaled Network</option>
+                  </select>
+                  <span class="field-error" data-error-for="quoteService"></span>
+                </div>
+                <div class="form-field">
+                  <select id="quotePickup" name="pickupCity" required>
+                    <option value="" disabled selected>Pickup city</option>
+                    <option value="new-york">New York, USA</option>
+                    <option value="rotterdam">Rotterdam, Netherlands</option>
+                    <option value="singapore">Singapore</option>
+                  </select>
+                  <span class="field-error" data-error-for="quotePickup"></span>
+                </div>
               </div>
-              <input type="email" placeholder="Work email">
+              <div class="form-row-twin">
+                <div class="form-field">
+                  <select id="quoteDelivery" name="deliveryCity" required>
+                    <option value="" disabled selected>Delivery city</option>
+                    <option value="los-angeles">Los Angeles, USA</option>
+                    <option value="london">London, UK</option>
+                    <option value="tokyo">Tokyo, Japan</option>
+                  </select>
+                  <span class="field-error" data-error-for="quoteDelivery"></span>
+                </div>
+                <div class="form-field">
+                  <input type="tel" id="quotePhone" name="phone" placeholder="Phone Number" data-validate="phone" required>
+                  <span class="field-error" data-error-for="quotePhone"></span>
+                </div>
+              </div>
+              <div class="form-field">
+                <input type="email" id="quoteEmail" name="email" placeholder="Work email" data-validate="email" required>
+                <span class="field-error" data-error-for="quoteEmail"></span>
+              </div>
               <button type="submit">Send Request</button>
             </form>
           </div>

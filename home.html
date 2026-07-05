@@ -11,28 +11,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- STICKY MAIN HEADER NAVIGATION BAR -->
-    <header class="header-nav-bar" id="siteHeader">
-        <div class="logo-box">
-            <a href="index.html">Stackly<span>.</span></a>
+<nav class="nav-bar">
+            <div class="logo-box">
+                <img src="./src/logo/Untitled design-compressed (1).webp" alt="">
+            </div>
+            <div class="nav-links ">
+                <a href="./home.html">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./service.html">Service</a>
+                <a href="./blog.html">Blog</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+ 
+            </div>
+            <div class="login-btn">
+                <a href="./login.html">
+                    <Button title="Login to Tract Your order and History">Login</Button>
+                </a>
+            </div>
+        </nav>
+        <div class="mobile-nav">
+            <div class="mobile-menu">
+                 <a href="./home.html">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./service.html">Service</a>
+                <a href="./blog.html">Blog</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+            <div class="mobile-login-btn" id="mobile-login-btn">
+                <a href="./login.html">
+                    <Button title="Login to Tract Your order and History">Login</Button>
+                </a>
+            </div>
         </div>
-
-        <ul class="nav-links-wrapper" id="navLinksWrapper" aria-label="Primary navigation">
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="about.html" class="nav-link">About</a></li>
-            <li><a href="service.html" class="nav-link">Services</a></li>
-            <li><a href="blog.html" class="nav-link">Blog</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
-            <li><a href="login.html" class="header-action-btn">Login</a></li>
-        </ul>
-
-        <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </header>
 
     <!-- Backdrop shown behind the mobile drawer -->
     <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
@@ -85,28 +100,32 @@
                 </div>
 
                 <div class="sheet-tab-panel active-panel" id="pane-shipment-tracking">
-                    <form class="sheet-inline-form" onsubmit="event.preventDefault();">
+                    <form class="sheet-inline-form" id="heroTrackingForm" novalidate>
                         <div class="sheet-input-block">
                             <span class="sheet-input-label">Order ID</span>
-                            <input type="text" placeholder="Enter ID number" required>
+                            <input type="text" id="heroOrderId" name="orderId" placeholder="Enter ID number" data-validate="orderId" required>
+                            <span class="field-error" data-error-for="heroOrderId"></span>
                         </div>
                         <div class="sheet-input-block">
                             <span class="sheet-input-label">Your E-mail</span>
-                            <input type="email" placeholder="Enter Your Email" required>
+                            <input type="email" id="heroEmail" name="email" placeholder="Enter Your Email" data-validate="email" required>
+                            <span class="field-error" data-error-for="heroEmail"></span>
                         </div>
                         <button type="submit" class="sheet-submit-btn">Track Order</button>
                     </form>
                 </div>
 
                 <div class="sheet-tab-panel" id="pane-warehouse-finding">
-                    <form class="sheet-inline-form" onsubmit="event.preventDefault();">
+                    <form class="sheet-inline-form" id="heroWarehouseForm" novalidate>
                         <div class="sheet-input-block">
                             <span class="sheet-input-label">Region</span>
-                            <input type="text" placeholder="State, City or Postal Zip Code">
+                            <input type="text" id="heroRegion" name="region" placeholder="State, City or Postal Zip Code" data-validate="region" required>
+                            <span class="field-error" data-error-for="heroRegion"></span>
                         </div>
                         <div class="sheet-input-block">
                             <span class="sheet-input-label">Facility</span>
-                            <input type="text" placeholder="Cold Storage, Cross-Docking...">
+                            <input type="text" id="heroFacility" name="facility" placeholder="Cold Storage, Cross-Docking..." data-validate="facility" required>
+                            <span class="field-error" data-error-for="heroFacility"></span>
                         </div>
                         <button type="submit" class="sheet-submit-btn">Find Facility</button>
                     </form>

@@ -7,29 +7,48 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="pages.css">
 </head>
 <body class="page-shell">
-  <header class="header-nav-bar" id="siteHeader">
-    <div class="logo-box">
-      <a href="index.html">Stackly<span>.</span></a>
-    </div>
-    <ul class="nav-links-wrapper" id="navLinksWrapper" aria-label="Primary navigation">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="about.html" class="nav-link">About</a></li>
-      <li><a href="service.html" class="nav-link">Services</a></li>
-      <li><a href="blog.html" class="nav-link">Blog</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-      <li><a href="login.html" class="header-action-btn">Login</a></li>
-    </ul>
-    <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
-      <span></span><span></span><span></span>
-    </div>
-    <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Close navigation menu">
-      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-    </button>
-  </header>
-  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+  <nav class="nav-bar">
+            <div class="logo-box">
+                <img src="./src/logo/Untitled design-compressed (1).webp" alt="">
+            </div>
+            <div class="nav-links ">
+                <a href="./home.html">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./service.html">Service</a>
+                <a href="./blog.html">Blog</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+ 
+            </div>
+            <div class="login-btn">
+                <a href="./login.html">
+                    <Button title="Login to Tract Your order and History">Login</Button>
+                </a>
+            </div>
+        </nav>
+        <div class="mobile-nav">
+            <div class="mobile-menu">
+                 <a href="./home.html">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./service.html">Service</a>
+                <a href="./blog.html">Blog</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+            <div class="mobile-login-btn" id="mobile-login-btn">
+                <a href="./login.html">
+                    <Button title="Login to Tract Your order and History">Login</Button>
+                </a>
+            </div>
+        </div>
 
   <main>
     <section class="page-hero">
@@ -42,10 +61,43 @@
         <div class="auth-card" data-reveal="fade">
           <img class="page-hero-image" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" alt="Account setup for logistics management" loading="lazy">
           <h3>Create account</h3>
-          <form class="form-stack">
-            <input type="text" placeholder="Full name" required />
-            <input type="email" placeholder="Business email" required />
-            <input type="password" placeholder="Create password" required />
+          <form class="form-stack" id="signupForm" novalidate>
+            <div class="form-field">
+              <input type="text" id="signupName" name="fullName" placeholder="Full name" data-validate="name" required />
+              <span class="field-error" data-error-for="signupName"></span>
+            </div>
+            <div class="form-field">
+              <input type="email" id="signupEmail" name="businessEmail" placeholder="Business email" data-validate="email" required />
+              <span class="field-error" data-error-for="signupEmail"></span>
+            </div>
+            <div class="form-field">
+              <input type="tel" id="signupPhone" name="phone" placeholder="Phone number" data-validate="phone" required />
+              <span class="field-error" data-error-for="signupPhone"></span>
+            </div>
+            <div class="form-field">
+              <div class="password-field">
+                <input type="password" id="signupPassword" name="password" placeholder="Create password" data-validate="password" required />
+                <button type="button" class="password-toggle" data-target="signupPassword" aria-label="Show password" onclick="togglePasswordVisibility('signupPassword', this)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+              <span class="field-error" data-error-for="signupPassword"></span>
+            </div>
+            <div class="form-field">
+              <div class="password-field">
+                <input type="password" id="signupConfirmPassword" name="confirmPassword" placeholder="Confirm password" data-validate="confirmPassword" required />
+                <button type="button" class="password-toggle" data-target="signupConfirmPassword" aria-label="Show password" onclick="togglePasswordVisibility('signupConfirmPassword', this)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </button>
+              </div>
+              <span class="field-error" data-error-for="signupConfirmPassword"></span>
+            </div>
             <label class="auth-select-row">
               <span>Account role</span>
               <select name="role">
@@ -61,6 +113,7 @@
                 <option value="51+">51+ employees</option>
               </select>
             </label>
+            <div class="form-status" id="signupStatus" role="status" aria-live="polite"></div>
             <button class="inline-btn" type="submit">Create Account</button>
           </form>
           <p>Already registered? <a href="login.html">Login here</a>.</p>
@@ -100,22 +153,46 @@
       </div>
     </section>
 
-    <section class="page-section">
-      <div class="section-card section-card--visual" data-reveal="fade">
-        <div>
-          <div class="section-title">
-            <h2>Start with a free consultation</h2>
-            <span class="section-badge">Get Started</span>
+    <!-- LIVE DASHBOARD PREVIEW (what a new account opens into) -->
+    <section class="sk-section sk-section--dark login-preview-section">
+      <span class="sk-eyebrow">After You Sign Up</span>
+      <h2 class="sk-h2">Your dashboard is already waiting</h2>
+      <p class="sk-lede">The moment your account is verified, this is the control tower you land on — the same one existing teams check every morning.</p>
+
+      <div class="preview-shell" data-reveal="fade">
+        <div class="preview-metrics">
+          <div class="preview-metric-row">
+            <div class="preview-metric-head"><span>Order accuracy</span><b>99.6%</b></div>
+            <div class="preview-bar-track"><div class="preview-bar-fill" style="width:99.6%"></div></div>
           </div>
-          <p>We’ll help you set up the right workflow and make your first steps feel effortless.</p>
-          <div class="feature-pill-row">
-            <span class="feature-pill">Fast kickoff</span>
-            <span class="feature-pill">Tailored guidance</span>
-            <span class="feature-pill">Growth planning</span>
+          <div class="preview-metric-row">
+            <div class="preview-metric-head"><span>Same-day dispatch</span><b>94%</b></div>
+            <div class="preview-bar-track"><div class="preview-bar-fill" style="width:94%"></div></div>
+          </div>
+          <div class="preview-metric-row">
+            <div class="preview-metric-head"><span>Dock-to-stock ≤ 24h</span><b>88%</b></div>
+            <div class="preview-bar-track"><div class="preview-bar-fill" style="width:88%"></div></div>
           </div>
         </div>
-        <div class="visual-panel">
-          <img class="section-media" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1000" alt="Consultation meeting for new logistics accounts" loading="lazy">
+        <div class="preview-feed">
+          <div class="preview-feed-label">Shipment feed</div>
+          <div class="preview-feed-row"><span>#48211</span><b>Cleared customs — Rotterdam</b></div>
+          <div class="preview-feed-row"><span>#48198</span><b>Picked & packed — Austin</b></div>
+          <div class="preview-feed-row"><span>#48176</span><b>Out for delivery — Chicago</b></div>
+          <div class="preview-feed-row"><span>#48154</span><b>Delivered — signature captured</b></div>
+        </div>
+      </div>
+    </section>
+
+  
+
+    <!-- CLOSING CTA -->
+    <section class="sk-section sk-cta-section">
+      <div class="cta-panel" data-reveal="fade">
+        <h2>Prefer to talk it through first?</h2>
+        <div class="page-hero-actions">
+          <a href="contact.html" class="inline-btn">Talk to Sales</a>
+          <a href="login.html" class="inline-btn-dark">Already Have an Account</a>
         </div>
       </div>
     </section>
@@ -172,5 +249,106 @@
     <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
   </button>
   <script src="script.js"></script>
+
+  <script>
+    (function () {
+      var form = document.getElementById('signupForm');
+      if (!form) return;
+
+      var statusEl = document.getElementById('signupStatus');
+
+      var validators = {
+        name: function (value) {
+          var v = value.trim();
+          if (!v) return 'Please enter your full name.';
+          if (v.length < 2) return 'Name looks too short.';
+          if (!/^[A-Za-z\s.'-]+$/.test(v)) return 'Name can only contain letters and spaces.';
+          if (v.trim().split(/\s+/).length < 2) return 'Please enter first and last name.';
+          return '';
+        },
+        email: function (value) {
+          var v = value.trim();
+          if (!v) return 'Please enter your business email.';
+          var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+          if (!emailPattern.test(v)) return 'Please enter a valid email address.';
+          return '';
+        },
+        phone: function (value) {
+          var v = value.trim();
+          if (!v) return 'Please enter a phone number.';
+          var digitsOnly = v.replace(/[\s()-]/g, '');
+          if (!/^\+?\d{7,15}$/.test(digitsOnly)) return 'Enter a valid phone number (7–15 digits).';
+          return '';
+        },
+        password: function (value) {
+          if (!value) return 'Please create a password.';
+          if (value.length < 8) return 'Password must be at least 8 characters.';
+          if (!/[A-Za-z]/.test(value) || !/\d/.test(value)) return 'Use at least one letter and one number.';
+          return '';
+        }
+      };
+
+      function fieldWrapper(input) {
+        return input.closest('.form-field');
+      }
+
+      function showError(input, message) {
+        var wrapper = fieldWrapper(input);
+        var errorEl = document.querySelector('[data-error-for="' + input.id + '"]');
+        if (errorEl) errorEl.textContent = message;
+        if (wrapper) wrapper.classList.toggle('has-error', Boolean(message));
+      }
+
+      function validateField(input) {
+        var type = input.getAttribute('data-validate');
+        var fn = validators[type];
+        if (!fn) return true;
+        var message = fn(input.value);
+        showError(input, message);
+        return !message;
+      }
+
+      var validatedInputs = form.querySelectorAll('[data-validate]');
+
+      validatedInputs.forEach(function (input) {
+        input.addEventListener('blur', function () { validateField(input); });
+        input.addEventListener('input', function () {
+          var wrapper = fieldWrapper(input);
+          if (wrapper && wrapper.classList.contains('has-error')) validateField(input);
+        });
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var isValid = true;
+        validatedInputs.forEach(function (input) {
+          if (!validateField(input)) isValid = false;
+        });
+
+        if (!isValid) {
+          if (statusEl) {
+            statusEl.textContent = 'Please fix the highlighted fields before continuing.';
+            statusEl.classList.add('form-status--error');
+          }
+          var firstError = form.querySelector('.form-field.has-error input');
+          if (firstError) firstError.focus();
+          return;
+        }
+
+        if (statusEl) {
+          statusEl.textContent = 'Account created! Redirecting to login...';
+          statusEl.classList.remove('form-status--error');
+          statusEl.classList.add('form-status--success');
+        }
+
+        var email = document.getElementById('signupEmail').value.trim();
+
+        setTimeout(function () {
+          window.location.href = 'login.html?email=' + encodeURIComponent(email);
+        }, 900);
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -12,26 +12,44 @@
   <link rel="stylesheet" href="pages.css" />
 </head>
 <body class="page-shell">
-  <header class="header-nav-bar" id="siteHeader">
-    <div class="logo-box">
-      <a href="index.html">Stackly<span>.</span></a>
-    </div>
-    <ul class="nav-links-wrapper" id="navLinksWrapper" aria-label="Primary navigation">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="about.html" class="nav-link">About</a></li>
-      <li><a href="service.html" class="nav-link">Services</a></li>
-      <li><a href="blog.html" class="nav-link">Blog</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-      <li><a href="login.html" class="header-action-btn">Login</a></li>
-    </ul>
-    <div class="mobile-hamburger" id="mobileHamburger" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
-      <span></span><span></span><span></span>
-    </div>
-    <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Close navigation menu">
-      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-    </button>
-  </header>
-  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+ <nav class="nav-bar">
+            <div class="logo-box">
+                <img src="./src/logo/Untitled design-compressed (1).webp" alt="">
+            </div>
+            <div class="nav-links ">
+                <a href="./home.html">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./service.html">Service</a>
+                <a href="./blog.html">Blog</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+ 
+            </div>
+            <div class="login-btn">
+                <a href="./login.html">
+                    <Button title="Login to Tract Your order and History">Login</Button>
+                </a>
+            </div>
+        </nav>
+        <div class="mobile-nav">
+            <div class="mobile-menu">
+                 <a href="./home.html">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./service.html">Service</a>
+                <a href="./blog.html">Blog</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+            <div class="mobile-login-btn" id="mobile-login-btn">
+                <a href="./login.html">
+                    <Button title="Login to Tract Your order and History">Login</Button>
+                </a>
+            </div>
+        </div>
+
 
   <main>
     <!-- HERO — enriched with quick stats + trust chips -->
