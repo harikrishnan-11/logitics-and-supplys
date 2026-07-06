@@ -1,19 +1,998 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Dashboard | Stackly Logistics</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>STACKLY — My Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="./dashboard.css">
 </head>
-<body class="page-shell">
-  <main style="padding: 60px 24px; max-width: 900px; margin: 0 auto;">
-    <div class="section-card" style="padding: 32px;">
-      <div class="section-badge">User</div>
-      <h1 style="margin-top: 12px;">Welcome to your User Dashboard</h1>
-      <p>Track your shipments, account details, and support requests here.</p>
-      <a href="index.html" class="inline-btn" style="margin-top: 16px;">Back to Home</a>
+<body>
+
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- ════ SIDEBAR ════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo"><a href="./home.html">
+                    <img src="./src/logo/Untitled design-compressed (1).webp" alt="">
+                </a></div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-section-label">My Account</div>
+    <div class="nav-item active" data-page="home"><i class="fa-solid fa-house"></i> Home</div>
+    <div class="nav-item" data-page="track"><i class="fa-solid fa-location-crosshairs"></i> Track Shipment</div>
+    <div class="nav-item" data-page="orders"><i class="fa-solid fa-boxes-stacked"></i> My Orders <span class="nav-badge">6</span></div>
+    <div class="nav-item" data-page="history"><i class="fa-solid fa-clock-rotate-left"></i> History</div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Support</div>
+    <div class="nav-item" data-page="notifications"><i class="fa-solid fa-bell"></i> Notifications <span class="nav-badge amber">3</span></div>
+    <div class="nav-item" data-page="support"><i class="fa-solid fa-headset"></i> Help & Support</div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Account</div>
+    <div class="nav-item" data-page="profile"><i class="fa-solid fa-user"></i> Profile</div>
+    <div class="nav-item" data-page="addresses"><i class="fa-solid fa-location-dot"></i> Saved Addresses</div>
+    <div class="nav-item" data-page="billing"><i class="fa-solid fa-credit-card"></i> Billing</div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="user-card">
+      <div>
+        <a href="./login.html"><button>Logout</button></a>
+      </div>
     </div>
-  </main>
+  </div>
+</aside>
+
+<!-- ════ TOPBAR ════ -->
+<header class="topbar" id="topbar">
+  <button class="topbar-hamburger" onclick="toggleSidebar()" aria-label="Toggle navigation">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+  <div class="topbar-breadcrumb">
+    STACKLY <span class="sep">/</span>
+    <span id="topbarPageName">Home</span>
+  </div>
+  <div class="topbar-live">
+    <div class="live-blink"></div>
+    Tracking Live
+  </div>
+  <div class="topbar-user">
+    <div class="topbar-user-info">
+      <div class="topbar-user-email" id="emailuser">User@gmail.com</div>
+      <div class="topbar-user-role">Customer</div>
+    </div>
+    <div class="topbar-avatar" onclick="navigate('profile')">V</div>
+  </div>
+</header>
+
+<!-- ════ MAIN ════ -->
+<main class="main" id="main">
+
+  <!-- ══ HOME ══ -->
+  <div class="page-view active" id="page-home">
+    <div class="page-header">
+      <div>
+        <div class="page-title-txt">Welcome to User Dashboard</div>
+        <div class="page-subtitle">Here's a snapshot of your active shipments · Jun 16, 2026</div>
+      </div>
+      <div class="page-actions">
+        <div class="date-badge"><i class="fa-regular fa-calendar" style="margin-right:6px"></i>Jun 16, 2026</div>
+        <button class="btn-primary" onclick="showToast('New Order','Opening order form...')"><i class="fa-solid fa-plus"></i> New Order</button>
+      </div>
+    </div>
+
+    <!-- User KPIs -->
+    <div class="kpi-grid" id="userKpiGrid"></div>
+
+    <!-- Quick Track + Recent Orders -->
+    <div class="dash-grid">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Quick Track</div></div>
+        <div class="card-body">
+          <div class="track-input-wrap" style="margin-bottom:16px">
+            <input class="track-input" id="homeTrackInput" type="text" placeholder="Enter tracking ID…"/>
+            <button class="track-btn" onclick="quickTrack()"><i class="fa-solid fa-magnifying-glass"></i> TRACK</button>
+          </div>
+          <!-- active shipment summary cards -->
+          <div style="display:flex;flex-direction:column;gap:10px" id="activeShipCards"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-title">Spend This Month</div>
+          <div class="card-actions">
+            <div class="card-pill active" onclick="setPill(this)">30D</div>
+            <div class="card-pill" onclick="setPill(this)">90D</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="area-chart"><svg id="spendChart" viewBox="0 0 600 170" preserveAspectRatio="none"></svg></div>
+          <div class="chart-x-labels" id="spendChartLabels"></div>
+          <div class="chart-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--cyan)"></div>Spend (₹)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Shipments</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent + Notifications summary -->
+    <div class="mid-grid">
+      <div class="card" style="grid-column:span 2">
+        <div class="card-header">
+          <div class="card-title">Recent Orders</div>
+          <div class="card-actions"><div class="card-pill" onclick="navigate('orders')">View All</div></div>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead><tr><th>ID</th><th>Route</th><th class="hide-sm">Carrier</th><th>Progress</th><th>Status</th><th class="hide-sm">ETA</th><th>Actions</th></tr></thead>
+            <tbody id="homeOrdersTable"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Notifications</div>
+          <div class="card-actions"><div class="card-pill" onclick="navigate('notifications')">View All</div></div>
+        </div>
+        <div class="card-body" style="padding:10px 14px"><div class="alert-mini" id="homeNotifMini"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TRACK SHIPMENT ══ -->
+  <div class="page-view" id="page-track">
+    <div class="page-header">
+      <div><div class="page-title-txt">Track Shipment</div><div class="page-subtitle">Real-time location updates · every 8 seconds</div></div>
+      <div class="page-actions">
+        <button class="btn-ghost" onclick="showToast('Alert set','You will be notified on status change.')"><i class="fa-solid fa-bell"></i> Set Alert</button>
+      </div>
+    </div>
+    <div class="tracking-layout">
+      <div>
+        <div class="track-input-wrap">
+          <input class="track-input" id="trackInput" type="text" placeholder="TF-2026-XXXXXXXXX"/>
+          <button class="track-btn" onclick="runTrack()"><i class="fa-solid fa-magnifying-glass"></i> TRACK</button>
+        </div>
+        <div id="trackResultArea">
+          <div class="timeline" id="trackTimeline"></div>
+        </div>
+      </div>
+      <div class="map-box">
+        <div class="map-box-inner"></div><div class="map-box-glow"></div>
+        <svg style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 600 360" fill="none">
+          <path d="M90 234 Q200 280 300 144 Q380 60 480 72" stroke="#00e5ff" stroke-width="1.5" stroke-dasharray="5 4" opacity=".6"/>
+        </svg>
+        <div class="map-pin" style="top:65%;left:15%;background:var(--green);box-shadow:0 0 14px var(--green)"></div>
+        <div class="map-pin" style="top:40%;left:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan);animation-delay:.5s"></div>
+        <div class="map-pin" style="top:20%;left:80%;background:var(--amber);box-shadow:0 0 14px var(--amber);animation-delay:1s"></div>
+        <div style="position:absolute;bottom:12px;left:12px;font-family:var(--mono);font-size:.62rem;color:var(--text-2)">LIVE · TRACKING ACTIVE</div>
+        <div id="trackMapBadge" class="live-badge" style="top:12px;right:12px;bottom:auto"><div class="live-dot"></div><span id="trackMapLabel">Select a shipment</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ MY ORDERS ══ -->
+  <div class="page-view" id="page-orders">
+    <div class="page-header">
+      <div><div class="page-title-txt">My Orders</div><div class="page-subtitle">All your active and recent shipments</div></div>
+      <div class="page-actions">
+        <button class="btn-ghost" onclick="showToast('Export','Downloading your orders as CSV...')"><i class="fa-solid fa-download"></i> Export</button>
+        <button class="btn-primary" onclick="showToast('New Order','Opening order form...')"><i class="fa-solid fa-plus"></i> New Order</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="table-filters">
+        <div class="table-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search by ID, route…" oninput="filterOrders(this.value)"/></div>
+        <select class="filter-select" onchange="filterOrdersByStatus(this.value)">
+          <option value="">All Statuses</option>
+          <option value="transit">In Transit</option>
+          <option value="delivered">Delivered</option>
+          <option value="delayed">Delayed</option>
+          <option value="pending">Pending</option>
+        </select>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="data-table">
+          <thead><tr><th>ID</th><th>Route</th><th class="hide-sm">Carrier</th><th>Progress</th><th>Status</th><th class="hide-sm">ETA</th><th>Actions</th></tr></thead>
+          <tbody id="allOrdersTable"></tbody>
+        </table>
+      </div>
+      <div class="table-pagination">
+        <div class="pagination-info" id="ordersPaginInfo">Showing all orders</div>
+        <div class="pagination-btns" id="ordersPaginBtns"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HISTORY ══ -->
+  <div class="page-view" id="page-history">
+    <div class="page-header">
+      <div><div class="page-title-txt">Order History</div><div class="page-subtitle">Past delivered and closed shipments</div></div>
+      <div class="page-actions">
+        <button class="btn-ghost" onclick="showToast('Export','Downloading history CSV...')"><i class="fa-solid fa-download"></i> Export</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="table-filters">
+        <div class="table-search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search history…"/></div>
+        <select class="filter-select">
+          <option>All Time</option><option>Last 30 days</option><option>Last 90 days</option><option>2025</option>
+        </select>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="data-table">
+          <thead><tr><th>ID</th><th>Route</th><th class="hide-sm">Carrier</th><th>Delivered</th><th class="hide-sm">Cost</th><th>Rating</th><th>Actions</th></tr></thead>
+          <tbody id="historyTable"></tbody>
+        </table>
+      </div>
+      <div class="table-pagination">
+        <div class="pagination-info">Showing 1–8 of 612 deliveries</div>
+        <div class="pagination-btns" id="historyPaginBtns"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ NOTIFICATIONS ══ -->
+  <div class="page-view" id="page-notifications">
+    <div class="page-header">
+      <div><div class="page-title-txt">Notifications</div><div class="page-subtitle">3 unread · Updates on your shipments</div></div>
+      <div class="page-actions">
+        <button class="btn-ghost" onclick="showToast('Done','All notifications marked as read.')"><i class="fa-solid fa-check-double"></i> Mark All Read</button>
+      </div>
+    </div>
+    <div class="alerts-full-list" id="notifFullList"></div>
+  </div>
+
+  <!-- ══ HELP & SUPPORT ══ -->
+  <div class="page-view" id="page-support">
+    <div class="page-header">
+      <div><div class="page-title-txt">Help & Support</div><div class="page-subtitle">We're here to help · Avg response time 4 minutes</div></div>
+      <div class="page-actions">
+        <button class="btn-primary" onclick="showToast('Chat started','Connecting you to a support agent...')"><i class="fa-solid fa-headset"></i> Live Chat</button>
+      </div>
+    </div>
+    <div class="mid-grid">
+      <div class="card" style="grid-column:span 2">
+        <div class="card-header"><div class="card-title">Raise a Ticket</div></div>
+        <div class="card-body">
+          <div class="form-2col">
+            <div class="form-field"><label>Subject</label><input placeholder="e.g. Shipment delayed beyond ETA"/></div>
+            <div class="form-field"><label>Shipment ID (optional)</label><input placeholder="TF-XXXXXXXXX"/></div>
+          </div>
+          <div class="form-field"><label>Category</label>
+            <select class="filter-select" style="width:100%;margin-top:6px">
+              <option>Delivery Issue</option>
+              <option>Damaged Package</option>
+              <option>Wrong Address</option>
+              <option>Billing Query</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field"><label>Description</label>
+            <textarea style="width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:6px;color:var(--text-1);font-family:var(--sans);font-size:.82rem;padding:10px 12px;resize:vertical;min-height:90px;box-sizing:border-box" placeholder="Describe your issue…"></textarea>
+          </div>
+          <button class="btn-primary" onclick="showToast('Ticket raised','Your ticket has been submitted. Ref: #TKT-20260616-0041')"><i class="fa-solid fa-paper-plane"></i> Submit Ticket</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">FAQs</div></div>
+        <div class="card-body" style="padding:0 18px"><div id="faqList"></div></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:4px">
+      <div class="card-header"><div class="card-title">My Tickets</div></div>
+      <div style="overflow-x:auto">
+        <table class="data-table">
+          <thead><tr><th>Ref</th><th>Subject</th><th>Category</th><th>Status</th><th>Raised</th><th>Actions</th></tr></thead>
+          <tbody id="ticketsTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PROFILE ══ -->
+  <div class="page-view" id="page-profile">
+    <div class="page-header">
+      <div><div class="page-title-txt">My Profile</div><div class="page-subtitle">Manage your personal details and preferences</div></div>
+      <div class="page-actions">
+        <button class="btn-primary" onclick="showToast('Saved','Profile updated successfully.')"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+      </div>
+    </div>
+    <div class="settings-grid">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Personal Details</div></div>
+        <div class="card-body">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
+            <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--green));display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:700;color:#0a1929">V</div>
+            <div>
+              <div style="font-weight:700;font-size:.95rem"></div>
+              <div style="font-size:.75rem;color:var(--text-3);margin-top:3px">Customer since Jan 2024 · 621 shipments</div>
+            </div>
+          </div>
+          <div class="form-2col">
+            <div class="form-field"><label>First Name</label><input value=""/></div>
+            <div class="form-field"><label>Last Name</label><input value=""/></div>
+          </div>
+          <div class="form-field"><label>Email</label><input value=""/></div>
+          <div class="form-field"><label>Phone</label><input value=""/></div>
+          <div class="form-field"><label>Company</label><input value=""/></div>
+          <button class="btn-primary" style="margin-top:4px" onclick="showToast('Profile saved','Your details have been updated.')"><i class="fa-solid fa-floppy-disk"></i> Update Profile</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Notification Preferences</div></div>
+        <div class="card-body" style="padding:0 18px" id="userNotifSettings"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Security</div></div>
+        <div class="card-body">
+          <div class="form-field"><label>Current Password</label><input type="password" placeholder="••••••••"/></div>
+          <div class="form-field"><label>New Password</label><input type="password" placeholder="••••••••"/></div>
+          <div class="form-field"><label>Confirm Password</label><input type="password" placeholder="••••••••"/></div>
+          <button class="btn-ghost" onclick="showToast('Password changed','Your password has been updated.')"><i class="fa-solid fa-lock"></i> Change Password</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Display Preferences</div></div>
+        <div class="card-body" style="padding:0 18px" id="userDisplaySettings"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SAVED ADDRESSES ══ -->
+  <div class="page-view" id="page-addresses">
+    <div class="page-header">
+      <div><div class="page-title-txt">Saved Addresses</div><div class="page-subtitle">Manage your pickup and delivery locations</div></div>
+      <div class="page-actions">
+        <button class="btn-primary" onclick="showToast('Address','Opening address form...')"><i class="fa-solid fa-plus"></i> Add Address</button>
+      </div>
+    </div>
+    <div class="warehouses-grid" id="addressesGrid"></div>
+  </div>
+
+  <!-- ══ BILLING ══ -->
+  <div class="page-view" id="page-billing">
+    <div class="page-header">
+      <div><div class="page-title-txt">Billing</div><div class="page-subtitle">Invoices, payment methods and wallet balance</div></div>
+      <div class="page-actions">
+        <button class="btn-ghost" onclick="showToast('Export','Downloading invoice history...')"><i class="fa-solid fa-download"></i> Download All</button>
+        <button class="btn-primary" onclick="showToast('Wallet','Opening top-up flow...')"><i class="fa-solid fa-wallet"></i> Add Funds</button>
+      </div>
+    </div>
+
+    <!-- Billing KPIs -->
+    <div class="analytics-kpi-row" id="billingKpiRow"></div>
+
+    <div class="dash-grid" style="margin-top:16px">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Payment Methods</div><div class="card-actions"><div class="card-pill" onclick="showToast('Card','Opening payment method form...')">+ Add</div></div></div>
+        <div class="card-body" id="paymentMethods"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Spend Trend</div></div>
+        <div class="card-body">
+          <div class="area-chart"><svg id="billingChart" viewBox="0 0 600 170" preserveAspectRatio="none"></svg></div>
+          <div class="chart-x-labels" id="billingChartLabels"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="card-header"><div class="card-title">Recent Invoices</div></div>
+      <div style="overflow-x:auto">
+        <table class="data-table">
+          <thead><tr><th>Invoice</th><th>Description</th><th class="hide-sm">Date</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="invoicesTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── TICKER ── -->
+<div class="ticker-strip"><div class="ticker-inner" id="tickerInner"></div></div>
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+/* ═══════════ DATA ═══════════ */
+
+const userKpiData = [
+  {icon:'fa-boxes-stacked',  ib:'rgba(0,229,255,.12)', ic:'#00e5ff', val:'6',          label:'Active Shipments',   sub:'2 arriving today',          trend:'+2',    up:true},
+  {icon:'fa-circle-check',   ib:'rgba(0,230,118,.12)', ic:'#00e676', val:'612',         label:'Total Delivered',    sub:'All time · since Jan 2024',  trend:'+14',   up:true},
+  {icon:'fa-indian-rupee-sign',ib:'rgba(224,64,251,.12)',ic:'#e040fb',val:'₹1,04,280', label:'Spent This Month',   sub:'vs ₹89,140 last month',      trend:'+16.9%',up:false},
+  {icon:'fa-star',           ib:'rgba(255,171,0,.12)', ic:'#ffab00', val:'4.8',         label:'Avg Carrier Rating', sub:'Based on last 50 orders',    trend:'+0.2',  up:true},
+];
+
+const sparkD = [
+  [3,4,3,5,6,5,6],
+  [590,605,612,612,612,612,612],
+  [71000,82000,68000,91000,88000,104280,104280],
+  [4.6,4.7,4.7,4.8,4.8,4.8,4.8],
+];
+
+const myOrders = [
+  {id:'TF-910234A', route:'Mumbai → Delhi',        carrier:'BlueDart',  pct:74, st:'transit',   eta:'Jun 17, 11:00'},
+  {id:'TF-743821C', route:'Salem → Hyderabad', carrier:'DTDC',      pct:41, st:'transit',   eta:'Jun 16, 21:30'},
+  {id:'TF-628940D', route:'Pune → Ahmedabad',      carrier:'Shadowfax', pct:12, st:'delayed',   eta:'Jun 18 (delay)'},
+  {id:'TF-519007E', route:'Delhi → Jaipur',        carrier:'XpressBees',pct:0,  st:'pending',   eta:'Awaiting'},
+  {id:'TF-406183F', route:'Kolkata → Surat',       carrier:'BlueDart',  pct:91, st:'transit',   eta:'Jun 16, 23:45'},
+  {id:'TF-281903H', route:'Surat → Chennai',       carrier:'DTDC',      pct:55, st:'transit',   eta:'Jun 18, 08:15'},
+];
+
+const myHistory = [
+  {id:'TF-871059B', route:'Chennai → Kolkata',     carrier:'Delhivery', delivered:'Jun 14, 2026', cost:'₹4,210', rating:5},
+  {id:'TF-392740G', route:'Hyderabad → Kochi',     carrier:'Delhivery', delivered:'Jun 12, 2026', cost:'₹3,850', rating:5},
+  {id:'TF-958312L', route:'Kanpur → Chennai',      carrier:'Delhivery', delivered:'Jun 10, 2026', cost:'₹6,120', rating:4},
+  {id:'TF-830021A', route:'Mumbai → Pune',         carrier:'BlueDart',  delivered:'Jun 6, 2026',  cost:'₹1,980', rating:5},
+  {id:'TF-721904B', route:'Delhi → Lucknow',       carrier:'DTDC',      delivered:'May 29, 2026', cost:'₹2,640', rating:4},
+  {id:'TF-613455C', route:'Salem → Mysuru',    carrier:'Shadowfax', delivered:'May 21, 2026', cost:'₹1,150', rating:5},
+  {id:'TF-504129D', route:'Ahmedabad → Mumbai',    carrier:'BlueDart',  delivered:'May 14, 2026', cost:'₹3,390', rating:3},
+  {id:'TF-395810E', route:'Chennai → Salem',   carrier:'Delhivery', delivered:'May 7, 2026',  cost:'₹2,210', rating:5},
+];
+
+const notificationsD = [
+  {t:'crit', icon:'fa-circle-exclamation',    ic:'#ff5252', title:'TF-628940D is delayed',                 desc:'Your shipment from Pune to Ahmedabad is running 32 hours behind schedule. New ETA: Jun 18.',   time:'22 min ago'},
+  {t:'info', icon:'fa-location-dot',          ic:'#00e5ff', title:'TF-910234A cleared Delhi sorting hub',  desc:'Your parcel is on track and will be out for delivery tomorrow morning.',                        time:'6 min ago'},
+  {t:'info', icon:'fa-circle-check',          ic:'#00e676', title:'TF-871059B delivered — signed off',     desc:'Your shipment to Kolkata was delivered on Jun 14. Signature confirmed.',                       time:'2 days ago'},
+  {t:'warn', icon:'fa-triangle-exclamation',  ic:'#ffab00', title:'Action needed — address unconfirmed',   desc:'TF-519007E requires a confirmed delivery address before dispatch.',                             time:'3 days ago'},
+  {t:'info', icon:'fa-file-invoice',          ic:'#e040fb', title:'Invoice #INV-2026-0041 generated',      desc:'₹27,840 for June 1–15 has been invoiced. Due Jun 30.',                                        time:'1 day ago'},
+];
+
+const trackingStepsD = {
+  'TF-910234A': [
+    {done:true,  active:false, label:'STEP 1 · JUN 10', title:'Order Collected',              meta:'Mumbai Warehouse Hub · 08:30 IST'},
+    {done:true,  active:false, label:'STEP 2 · JUN 11', title:'Departed Origin Hub',          meta:'BOM Cargo Terminal · 21:15 IST'},
+    {done:false, active:true,  label:'STEP 3 · NOW',    title:'In Transit — Delhi Sorting Hub',meta:'Estimated arrival in 2h 40m · On schedule'},
+    {done:false, active:false, label:'STEP 4 · JUN 17', title:'Out for Delivery',             meta:'Local delivery partner assignment pending'},
+    {done:false, active:false, label:'STEP 5 · JUN 17', title:'Delivered',                   meta:'Signature required at destination'},
+  ],
+  'TF-628940D': [
+    {done:true,  active:false, label:'STEP 1 · JUN 13', title:'Order Collected',              meta:'Pune Hub · 10:00 IST'},
+    {done:true,  active:false, label:'STEP 2 · JUN 14', title:'Departed Pune Hub',            meta:'NH-48 · 14:30 IST'},
+    {done:false, active:true,  label:'STEP 3 · DELAYED',title:'Held — Nashik Check Post',    meta:'Regulatory delay · Estimated clearance Jun 17'},
+    {done:false, active:false, label:'STEP 4 · JUN 18', title:'Out for Delivery',             meta:'Rescheduled'},
+    {done:false, active:false, label:'STEP 5 · JUN 18', title:'Delivered',                   meta:'Ahmedabad destination'},
+  ],
+};
+
+const addressesD = [
+  {name:'Mumbai Central Hub',   loc:'Andheri East, Mumbai, 400093',    cap:null, inv:null, status:'default',   color:'#00e5ff'},
+  {name:'Salem Office',      loc:'Electronic City Phase 1, BLR, 560100', cap:null, inv:null, status:'saved', color:'#00e676'},
+  {name:'Pune Warehouse',        loc:'Hinjewadi IT Park, Pune, 411057', cap:null, inv:null, status:'saved',   color:'#00e676'},
+  {name:'Delhi NCR Branch',      loc:'Sector 62, Noida, UP 201309',    cap:null, inv:null, status:'saved',   color:'#ffab00'},
+];
+
+const billingKpiD = [
+  {icon:'fa-wallet',             ib:'rgba(0,229,255,.12)', ic:'#00e5ff', val:'₹18,400',    label:'Wallet Balance',     trend:'Top up',  up:true},
+  {icon:'fa-receipt',            ib:'rgba(0,230,118,.12)', ic:'#00e676', val:'₹1,04,280',  label:'Spent This Month',   trend:'+16.9%',  up:false},
+  {icon:'fa-clock',              ib:'rgba(255,171,0,.12)', ic:'#ffab00', val:'₹27,840',    label:'Pending Invoice',    trend:'Due Jun 30',up:false},
+];
+
+const invoicesD = [
+  {id:'INV-2026-0041', desc:'Jun 1–15 Shipments (14 orders)',  date:'Jun 15, 2026', amount:'₹27,840', st:'unpaid'},
+  {id:'INV-2026-0039', desc:'May 16–31 Shipments (11 orders)', date:'May 31, 2026', amount:'₹23,190', st:'paid'},
+  {id:'INV-2026-0036', desc:'May 1–15 Shipments (9 orders)',   date:'May 15, 2026', amount:'₹18,440', st:'paid'},
+  {id:'INV-2026-0033', desc:'Apr 16–30 Shipments (13 orders)', date:'Apr 30, 2026', amount:'₹21,850', st:'paid'},
+  {id:'INV-2026-0030', desc:'Apr 1–15 Shipments (10 orders)',  date:'Apr 15, 2026', amount:'₹16,200', st:'paid'},
+];
+
+const spendChartD  = [61400, 74200, 68900, 82100, 79400, 91800, 88300, 104280];
+const spendCountD  = [8, 9, 8, 11, 10, 12, 11, 14];
+const spendLabels  = ['Mar 16','Apr 1','Apr 15','May 1','May 15','Jun 1','Jun 8','Jun 16'];
+
+const billingChartD = spendChartD;
+const billingLabels  = spendLabels;
+
+const faqsD = [
+  {q:'How do I raise a claim for a damaged parcel?', a:'Go to Help & Support → Raise a Ticket and select "Damaged Package". Attach photos and we\'ll process within 2 business days.'},
+  {q:'Can I change the delivery address after dispatch?', a:'Address changes can be requested within 4 hours of dispatch. Contact live chat or raise a ticket immediately.'},
+  {q:'How long does a refund take?', a:'Approved refunds are credited to your wallet within 24 hours, or to your original payment method within 5–7 business days.'},
+  {q:'What is the maximum weight per shipment?', a:'Standard shipments support up to 50 kg. For heavier cargo, contact your account manager for freight options.'},
+];
+
+const ticketsD = [
+  {id:'TKT-20260610-0038', subject:'Delayed parcel — TF-628940D', category:'Delivery Issue', st:'open',   raised:'Jun 10, 2026'},
+  {id:'TKT-20260528-0027', subject:'Wrong invoice amount',         category:'Billing Query',  st:'resolved',raised:'May 28, 2026'},
+  {id:'TKT-20260514-0019', subject:'Damaged packaging — TF-504129D',category:'Damaged Package',st:'resolved',raised:'May 14, 2026'},
+];
+
+const userNotifSettingsD = [
+  {label:'Shipment Updates',    sub:'Push & email when your shipment status changes',   on:true},
+  {label:'Delivery Alerts',     sub:'Notify me 1 hour before out-for-delivery',        on:true},
+  {label:'Invoice Ready',       sub:'Email when a new invoice is generated',           on:true},
+  {label:'Promotional Offers',  sub:'Occasional offers from STACKLY partners',         on:false},
+];
+const userDisplaySettingsD = [
+  {label:'Dark Mode',           sub:'Always use dark theme',                           on:true},
+  {label:'Auto-Refresh',        sub:'Live status refreshes every 8 seconds',          on:true},
+  {label:'Compact Tables',      sub:'Show more rows with reduced spacing',             on:false},
+  {label:'Show Carrier Logos',  sub:'Display carrier branding on order cards',         on:true},
+];
+
+const tickerUserD = [
+  '6 active shipments','2 arriving today','₹1,04,280 spent this month',
+  'Avg delivery 1.9 days','4.8 avg carrier rating','612 total deliveries',
+  'Wallet balance ₹18,400','3 unread notifications',
+];
+
+/* ═══════════ CHART HELPERS ═══════════ */
+
+function sparkPath(data,w=100,h=28){
+  const max=Math.max(...data),min=Math.min(...data),range=(max-min)||1,step=w/(data.length-1);
+  return data.map((v,i)=>`${i===0?'M':'L'}${(i*step).toFixed(1)},${(h-((v-min)/range)*h).toFixed(1)}`).join(' ');
+}
+
+function buildAreaPaths(data,maxVal,w=600,h=170,pad=10){
+  const stepX=w/(data.length-1);
+  const pts=data.map((v,i)=>[i*stepX, h-pad-(v/maxVal)*(h-pad*2)]);
+  let line=`M${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)}`;
+  for(let i=1;i<pts.length;i++) line+=` L${pts[i][0].toFixed(1)},${pts[i][1].toFixed(1)}`;
+  const area=`${line} L${pts[pts.length-1][0].toFixed(1)},${h} L0,${h} Z`;
+  return {line,area};
+}
+
+function renderAreaChart(svgId,seriesArr,colors,xLabelId,labels){
+  const svg=document.getElementById(svgId); if(!svg) return;
+  const maxVal=Math.max(...seriesArr.flat())*1.15;
+  let content='';
+  seriesArr.forEach((s,idx)=>{
+    const {line,area}=buildAreaPaths(s,maxVal);
+    const gradId=`grad-${svgId}-${idx}`;
+    content+=`<defs><linearGradient id="${gradId}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="${colors[idx]}" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="${colors[idx]}" stop-opacity="0"/>
+    </linearGradient></defs>
+    <path d="${area}" fill="url(#${gradId})" stroke="none"/>
+    <path d="${line}" fill="none" stroke="${colors[idx]}" stroke-width="2"/>`;
+  });
+  svg.innerHTML=content;
+  if(xLabelId&&labels){
+    const xDiv=document.getElementById(xLabelId);
+    const showEvery=Math.max(1,Math.ceil(labels.length/7));
+    xDiv.innerHTML=labels.filter((_,i)=>i%showEvery===0).map(l=>`<div class="chart-x-label">${l}</div>`).join('');
+  }
+}
+
+/* ═══════════ RENDER: KPI ═══════════ */
+
+function renderUserKPI(){
+  document.getElementById('userKpiGrid').innerHTML=userKpiData.map((k,i)=>`
+    <div class="kpi-card">
+      <div class="kpi-top">
+        <div class="kpi-icon" style="background:${k.ib};color:${k.ic}"><i class="fa-solid ${k.icon}"></i></div>
+        <div class="kpi-trend ${k.up?'trend-up':'trend-dn'}"><i class="fa-solid fa-arrow-${k.up?'up':'down'}"></i>${k.trend}</div>
+      </div>
+      <div class="kpi-val">${k.val}</div>
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-sub">${k.sub}</div>
+      <div class="kpi-spark"><svg viewBox="0 0 100 28" preserveAspectRatio="none"><path d="${sparkPath(sparkD[i])}" fill="none" stroke="${k.ic}" stroke-width="1.6"/></svg></div>
+    </div>`).join('');
+}
+
+/* ═══════════ RENDER: ACTIVE SHIP CARDS (home) ═══════════ */
+
+function stColor(st){
+  return {transit:'var(--cyan)',delivered:'var(--green)',delayed:'var(--red)',pending:'var(--amber)'}[st]||'var(--text-3)';
+}
+function stLabel(st){
+  return {transit:'In Transit',delivered:'Delivered',delayed:'Delayed',pending:'Pending'}[st]||st;
+}
+
+function renderActiveShipCards(){
+  const active=myOrders.filter(o=>o.st!=='delivered').slice(0,3);
+  document.getElementById('activeShipCards').innerHTML=active.map(o=>`
+    <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;cursor:pointer" onclick="openTrack('${o.id}')">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-family:var(--mono);font-size:.72rem;color:var(--cyan)">${o.id}</span>
+        <span style="font-size:.68rem;color:${stColor(o.st)};font-weight:600;text-transform:uppercase;letter-spacing:.06em">${stLabel(o.st)}</span>
+      </div>
+      <div style="font-size:.82rem;font-weight:600">${o.route}</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="flex:1;height:4px;background:var(--border);border-radius:99px;overflow:hidden">
+          <div style="height:100%;width:${o.pct}%;background:${stColor(o.st)};border-radius:99px;transition:width .4s"></div>
+        </div>
+        <span style="font-family:var(--mono);font-size:.68rem;color:var(--text-3)">${o.pct}%</span>
+      </div>
+      <div style="font-size:.72rem;color:var(--text-3)"><i class="fa-regular fa-clock" style="margin-right:5px"></i>${o.eta}</div>
+    </div>`).join('');
+}
+
+/* ═══════════ RENDER: ORDERS TABLE ═══════════ */
+
+function statusBadgeShip(st){
+  const map={transit:['In Transit','badge-transit'],delivered:['Delivered','badge-delivered'],delayed:['Delayed','badge-delayed'],pending:['Pending','badge-pending']};
+  const [label,cls]=map[st];
+  return `<span class="badge ${cls}">${label}</span>`;
+}
+
+function orderRow(o){
+  return `<tr>
+    <td class="td-id" style="cursor:pointer;color:var(--cyan)" onclick="openTrack('${o.id}')">${o.id}</td>
+    <td>${o.route}</td>
+    <td class="hide-sm">${o.carrier}</td>
+    <td><div class="progress-mini"><div class="progress-mini-fill" style="width:${o.pct}%"></div></div></td>
+    <td>${statusBadgeShip(o.st)}</td>
+    <td class="hide-sm">${o.eta}</td>
+    <td><div class="td-actions">
+      <div class="action-btn" onclick="openTrack('${o.id}')"><i class="fa-solid fa-location-dot"></i></div>
+      <div class="action-btn" onclick="showToast('${o.id}','Opening shipment details...')"><i class="fa-solid fa-eye"></i></div>
+    </div></td>
+  </tr>`;
+}
+
+let filteredOrders=myOrders;
+
+function renderOrdersTable(data){
+  const tbody=document.getElementById('allOrdersTable');
+  if(tbody) tbody.innerHTML=data.map(orderRow).join('');
+  const info=document.getElementById('ordersPaginInfo');
+  if(info) info.textContent=`Showing ${data.length} of ${myOrders.length} orders`;
+}
+
+function filterOrders(q){
+  filteredOrders=myOrders.filter(o=>o.id.toLowerCase().includes(q.toLowerCase())||o.route.toLowerCase().includes(q.toLowerCase()));
+  renderOrdersTable(filteredOrders);
+}
+function filterOrdersByStatus(st){
+  filteredOrders=st?myOrders.filter(o=>o.st===st):myOrders;
+  renderOrdersTable(filteredOrders);
+}
+
+function renderHomeOrders(){
+  const tbody=document.getElementById('homeOrdersTable');
+  if(tbody) tbody.innerHTML=myOrders.slice(0,4).map(orderRow).join('');
+}
+
+/* ═══════════ RENDER: HISTORY ═══════════ */
+
+function stars(n){
+  return Array.from({length:5},(_,i)=>`<i class="fa-${i<n?'solid':'regular'} fa-star" style="color:${i<n?'#ffab00':'var(--text-3)'};font-size:.72rem"></i>`).join('');
+}
+
+function renderHistory(){
+  document.getElementById('historyTable').innerHTML=myHistory.map(h=>`
+    <tr>
+      <td class="td-id">${h.id}</td>
+      <td>${h.route}</td>
+      <td class="hide-sm">${h.carrier}</td>
+      <td class="hide-sm">${h.delivered}</td>
+      <td class="hide-sm">${h.cost}</td>
+      <td>${stars(h.rating)}</td>
+      <td><div class="td-actions">
+        <div class="action-btn" onclick="showToast('Invoice','Downloading invoice for ${h.id}')"><i class="fa-solid fa-file-invoice"></i></div>
+        <div class="action-btn" onclick="showToast('Reorder','Creating new order using ${h.id} details...')"><i class="fa-solid fa-rotate-right"></i></div>
+      </div></td>
+    </tr>`).join('');
+  renderPagination('historyPaginBtns',1,5);
+}
+
+/* ═══════════ RENDER: TRACK ═══════════ */
+
+function renderTrackTimeline(steps){
+  document.getElementById('trackTimeline').innerHTML=steps.map(s=>`
+    <div class="tl-item ${s.done?'done':''} ${s.active?'active':''}">
+      <div class="tl-dot"></div>
+      <div class="tl-label">${s.label}</div>
+      <div class="tl-title">${s.title}</div>
+      <div class="tl-meta">${s.meta}</div>
+    </div>`).join('');
+}
+
+function runTrack(){
+  const val=document.getElementById('trackInput').value.trim().toUpperCase();
+  if(trackingStepsD[val]){
+    renderTrackTimeline(trackingStepsD[val]);
+    const active=trackingStepsD[val].find(s=>s.active);
+    const label=document.getElementById('trackMapLabel');
+    if(label) label.textContent=val+' · '+(active?active.title:'Complete');
+    showToast('Tracking','Live position updated for '+val);
+  } else if(val){
+    showToast('Not found','No shipment found for '+val+'. Check the ID and try again.');
+  }
+}
+
+function quickTrack(){
+  const val=document.getElementById('homeTrackInput').value.trim().toUpperCase();
+  navigate('track');
+  setTimeout(()=>{
+    const ti=document.getElementById('trackInput');
+    if(ti){ ti.value=val; runTrack(); }
+  },50);
+}
+
+function openTrack(id){
+  navigate('track');
+  setTimeout(()=>{
+    const ti=document.getElementById('trackInput');
+    if(ti){ ti.value=id; runTrack(); }
+  },50);
+}
+
+/* ═══════════ RENDER: NOTIFICATIONS ═══════════ */
+
+function renderNotifications(){
+  const html=notificationsD.map(a=>`
+    <div class="alert-full-item ${a.t}">
+      <div class="afi-icon" style="color:${a.ic}"><i class="fa-solid ${a.icon}"></i></div>
+      <div style="flex:1">
+        <div class="afi-title">${a.title}</div>
+        <div class="afi-desc">${a.desc}</div>
+        <div class="afi-time">${a.time}</div>
+      </div>
+      <div class="afi-right"><button class="btn-ghost" style="padding:6px 12px;font-size:.65rem" onclick="showToast('Dismissed','Notification removed.')">Dismiss</button></div>
+    </div>`).join('');
+  document.getElementById('notifFullList').innerHTML=html;
+}
+
+function renderHomeNotifMini(){
+  document.getElementById('homeNotifMini').innerHTML=notificationsD.slice(0,3).map(a=>`
+    <div class="alert-mini-item ${a.t}">
+      <div class="ami-icon" style="color:${a.ic}"><i class="fa-solid ${a.icon}"></i></div>
+      <div><div class="ami-title">${a.title}</div><div class="ami-sub">${a.time}</div></div>
+    </div>`).join('');
+}
+
+/* ═══════════ RENDER: ADDRESSES ═══════════ */
+
+function renderAddresses(){
+  document.getElementById('addressesGrid').innerHTML=addressesD.map(a=>`
+    <div class="warehouse-card">
+      <div class="wh-name" style="display:flex;align-items:center;gap:8px">
+        ${a.name}
+        ${a.status==='default'?'<span class="badge badge-delivered" style="font-size:.58rem">Default</span>':''}
+      </div>
+      <div class="wh-loc"><i class="fa-solid fa-location-dot"></i>${a.loc}</div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn-ghost" style="padding:6px 12px;font-size:.68rem" onclick="showToast('Edit','Opening address editor...')"><i class="fa-solid fa-pen"></i> Edit</button>
+        ${a.status!=='default'?`<button class="btn-ghost" style="padding:6px 12px;font-size:.68rem" onclick="showToast('Default set','Address set as default.')">Set Default</button>`:''}
+      </div>
+    </div>`).join('');
+}
+
+/* ═══════════ RENDER: BILLING ═══════════ */
+
+function renderBillingKpi(){
+  document.getElementById('billingKpiRow').innerHTML=billingKpiD.map(k=>`
+    <div class="kpi-card">
+      <div class="kpi-top">
+        <div class="kpi-icon" style="background:${k.ib};color:${k.ic}"><i class="fa-solid ${k.icon}"></i></div>
+        <div class="kpi-trend trend-up">${k.trend}</div>
+      </div>
+      <div class="kpi-val">${k.val}</div>
+      <div class="kpi-label">${k.label}</div>
+    </div>`).join('');
+}
+
+function renderPaymentMethods(){
+  document.getElementById('paymentMethods').innerHTML=`
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--surface-2);border:1px solid var(--cyan);border-radius:8px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;background:rgba(0,229,255,.12);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--cyan)"><i class="fa-solid fa-credit-card"></i></div>
+          <div><div style="font-weight:600;font-size:.84rem">HDFC Bank •••• 4291</div><div style="font-size:.7rem;color:var(--text-3)">Visa · Expires 03/28 · <span style="color:var(--cyan)">Default</span></div></div>
+        </div>
+        <button class="btn-ghost" style="padding:5px 10px;font-size:.65rem" onclick="showToast('Card','Managing card...')">Manage</button>
+      </div>
+      <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;background:rgba(0,230,118,.12);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--green)"><i class="fa-solid fa-wallet"></i></div>
+          <div><div style="font-weight:600;font-size:.84rem">STACKLY Wallet</div><div style="font-size:.7rem;color:var(--text-3)">Balance: <span style="color:var(--green)">₹18,400</span></div></div>
+        </div>
+        <button class="btn-primary" style="padding:5px 12px;font-size:.65rem" onclick="showToast('Wallet','Opening top-up...')">Add Funds</button>
+      </div>
+      <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;background:rgba(224,64,251,.12);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#e040fb"><i class="fa-solid fa-bolt"></i></div>
+          <div><div style="font-weight:600;font-size:.84rem">Razorpay UPI</div><div style="font-size:.7rem;color:var(--text-3)">vikram@okaxis</div></div>
+        </div>
+        <button class="btn-ghost" style="padding:5px 10px;font-size:.65rem" onclick="showToast('UPI','Managing UPI...')">Manage</button>
+      </div>
+    </div>`;
+}
+
+function renderInvoices(){
+  document.getElementById('invoicesTable').innerHTML=invoicesD.map(inv=>`
+    <tr>
+      <td class="td-id">${inv.id}</td>
+      <td>${inv.desc}</td>
+      <td class="hide-sm">${inv.date}</td>
+      <td style="font-family:var(--mono);font-weight:700">${inv.amount}</td>
+      <td><span class="badge ${inv.st==='paid'?'badge-delivered':'badge-pending'}">${inv.st==='paid'?'Paid':'Unpaid'}</span></td>
+      <td><div class="td-actions">
+        <div class="action-btn" onclick="showToast('Invoice','Downloading ${inv.id}...')"><i class="fa-solid fa-download"></i></div>
+        ${inv.st==='unpaid'?`<div class="action-btn" onclick="showToast('Payment','Opening payment for ${inv.id}...')"><i class="fa-solid fa-credit-card"></i></div>`:''}
+      </div></td>
+    </tr>`).join('');
+}
+
+/* ═══════════ RENDER: SUPPORT ═══════════ */
+
+function renderFAQs(){
+  document.getElementById('faqList').innerHTML=faqsD.map((f,i)=>`
+    <div style="border-bottom:1px solid var(--border);padding:12px 0">
+      <div style="font-weight:600;font-size:.82rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center" onclick="toggleFAQ(${i})">
+        <span>${f.q}</span>
+        <i class="fa-solid fa-chevron-down faq-chevron" id="faq-chev-${i}" style="font-size:.7rem;color:var(--text-3);transition:transform .2s"></i>
+      </div>
+      <div id="faq-ans-${i}" style="display:none;font-size:.78rem;color:var(--text-2);margin-top:8px;line-height:1.6">${f.a}</div>
+    </div>`).join('');
+}
+
+function toggleFAQ(i){
+  const ans=document.getElementById(`faq-ans-${i}`);
+  const chev=document.getElementById(`faq-chev-${i}`);
+  const open=ans.style.display==='block';
+  ans.style.display=open?'none':'block';
+  chev.style.transform=open?'':'rotate(180deg)';
+}
+
+function renderTickets(){
+  document.getElementById('ticketsTable').innerHTML=ticketsD.map(t=>`
+    <tr>
+      <td class="td-id">${t.id}</td>
+      <td>${t.subject}</td>
+      <td>${t.category}</td>
+      <td><span class="badge ${t.st==='open'?'badge-transit':'badge-delivered'}">${t.st==='open'?'Open':'Resolved'}</span></td>
+      <td>${t.raised}</td>
+      <td><div class="td-actions"><div class="action-btn" onclick="showToast('Ticket','Viewing ${t.id}')"><i class="fa-solid fa-eye"></i></div></div></td>
+    </tr>`).join('');
+}
+
+/* ═══════════ RENDER: SETTINGS TOGGLES ═══════════ */
+
+function renderToggleGroup(containerId,data){
+  document.getElementById(containerId).innerHTML=data.map(d=>`
+    <div class="setting-row">
+      <div><div class="setting-label">${d.label}</div><div class="setting-sub">${d.sub}</div></div>
+      <div class="toggle ${d.on?'on':'off'}" onclick="this.classList.toggle('on');this.classList.toggle('off')"><div class="toggle-knob"></div></div>
+    </div>`).join('');
+}
+
+/* ═══════════ PAGINATION ═══════════ */
+
+function renderPagination(id,active,total){
+  let html='<div class="page-btn"><i class="fa-solid fa-angle-left"></i></div>';
+  for(let i=1;i<=total;i++) html+=`<div class="page-btn ${i===active?'active':''}">${i}</div>`;
+  html+='<div class="page-btn"><i class="fa-solid fa-angle-right"></i></div>';
+  document.getElementById(id).innerHTML=html;
+}
+
+/* ═══════════ TICKER ═══════════ */
+
+function renderTicker(){
+  const html=tickerUserD.map(t=>`<div class="ticker-item"><div class="ticker-dot"></div>${t}</div>`).join('');
+  document.getElementById('tickerInner').innerHTML=html+html;
+}
+
+/* ═══════════ TOAST ═══════════ */
+
+function showToast(title,msg){
+  const c=document.getElementById('toastContainer');
+  const t=document.createElement('div');
+  t.className='toast';
+  t.innerHTML=`<div class="toast-title">${title}</div><div class="toast-msg">${msg}</div>`;
+  t.onclick=()=>removeToast(t);
+  c.appendChild(t);
+  setTimeout(()=>removeToast(t),4000);
+}
+function removeToast(t){
+  if(!t.parentNode) return;
+  t.classList.add('removing');
+  setTimeout(()=>t.remove(),300);
+}
+
+/* ═══════════ PILL ═══════════ */
+function setPill(el){
+  el.parentNode.querySelectorAll('.card-pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+}
+
+/* ═══════════ NAVIGATION ═══════════ */
+
+const pageNames={
+  home:'Home',track:'Track Shipment',orders:'My Orders',history:'History',
+  notifications:'Notifications',support:'Help & Support',
+  profile:'Profile',addresses:'Saved Addresses',billing:'Billing',
+};
+
+function navigate(page){
+  closeSidebar();
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.toggle('active',n.dataset.page===page));
+  document.querySelectorAll('.page-view').forEach(p=>p.classList.toggle('active',p.id===`page-${page}`));
+  const label=document.getElementById('topbarPageName');
+  if(label) label.textContent=pageNames[page]||page;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function closeSidebar(){
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+
+/* ═══════════ INIT ═══════════ */
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.nav-item').forEach(item=>{
+    item.addEventListener('click',()=>navigate(item.dataset.page));
+  });
+
+  /* home */
+  renderUserKPI();
+  renderActiveShipCards();
+  renderHomeOrders();
+  renderHomeNotifMini();
+  renderAreaChart('spendChart',[spendChartD,spendCountD.map(v=>v*10000)],['#00e5ff','#00e676'],'spendChartLabels',spendLabels);
+
+  /* track — default state */
+  renderTrackTimeline(trackingStepsD['TF-910234A']);
+
+  /* orders */
+  renderOrdersTable(myOrders);
+  renderPagination('ordersPaginBtns',1,3);
+
+  /* history */
+  renderHistory();
+
+  /* notifications */
+  renderNotifications();
+
+  /* support */
+  renderFAQs();
+  renderTickets();
+
+  /* profile */
+  renderToggleGroup('userNotifSettings',userNotifSettingsD);
+  renderToggleGroup('userDisplaySettings',userDisplaySettingsD);
+
+  /* addresses */
+  renderAddresses();
+
+  /* billing */
+  renderBillingKpi();
+  renderPaymentMethods();
+  renderInvoices();
+  renderAreaChart('billingChart',[billingChartD],['#e040fb'],'billingChartLabels',billingLabels);
+
+  /* ticker */
+  renderTicker();
+
+  
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.querySelectorAll("button").forEach(button => {
+
+    button.addEventListener("click", function (e) {
+
+      // Skip buttons inside links
+      if (this.closest("a")) return;
+
+      // Skip buttons with existing redirect class
+      if (this.classList.contains("no-404")) return;
+
+      // Wait for showToast to appear, then redirect
+      setTimeout(() => {
+        window.location.href = "./404.html";
+      }, 2000);
+
+    });
+
+  });
+
+});
+
+const email = localStorage.getItem("userEmail") || "Guest";
+document.getElementById("emailuser").textContent = email; 
+</script>
 </body>
 </html>

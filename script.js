@@ -267,6 +267,8 @@ document.addEventListener('DOMContentLoaded', () => {
             message = /^[^\s@]+@[^\s@]+\.(com|in)$/i.test(value) ? '' : 'Please enter a valid email ending with .com or .in.';
         } else if (validator === 'phone') {
             message = /^\d{10}$/.test(value) ? '' : 'Phone number must be 10 digits.';
+        } else if (validator === 'weight') {
+            message = /^(\d+)(\.\d{1,2})?$/.test(value) ? '' : 'Please enter a valid weight in kilograms.';
         } else if (validator === 'password') {
             message = value.length >= 8 ? '' : 'Password must be at least 8 characters long.';
         } else if (validator === 'confirmPassword') {
@@ -318,13 +320,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            if (form.id === 'loginForm') {
-                event.preventDefault();
-                const roleSelect = form.querySelector('select[name="role"]');
-                const selectedRole = roleSelect?.value === 'admin' ? 'admin' : 'user';
-                window.location.href = selectedRole === 'admin' ? 'admin.html' : 'user.html';
-                return;
-            }
+          if (form.id === 'loginForm') {
+    event.preventDefault();
+    const isValid = validateForm(form);
+    if (!isValid) return;
+    const email = document.getElementById("loginEmail").value.trim();
+    const role = form.querySelector('select[name="role"]').value;
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userRole", role);
+    window.location.href = role === "admin" ? "admin.html" : "user.html";
+    return;
+}
 
             if (form.id === 'heroTrackingForm' || form.id === 'heroWarehouseForm') {
                 event.preventDefault();

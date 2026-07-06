@@ -14,8 +14,9 @@
 <body class="page-shell">
  <nav class="nav-bar">
             <div class="logo-box">
-                <img src="./src/logo/Untitled design-compressed (1).webp" alt="">
-            </div>
+<a href="./home.html">
+                    <img src="./src/logo/Untitled design-compressed (1).webp" alt="">
+                </a>            </div>
             <div class="nav-links ">
                 <a href="./home.html">Home</a>
                 <a href="./about.html">About</a>
@@ -70,7 +71,7 @@
           </div>
         </div>
         <div class="auth-card" data-reveal="fade">
-          <img class="page-hero-image" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" alt="Secure logistics account access" loading="lazy">
+          <img class="page-hero-image" src="./src/images/image_8-compressed.webp" alt="Secure logistics account access" loading="lazy">
           <h3>Login</h3>
           <form class="form-stack" id="loginForm" novalidate>
             <div class="form-field">
@@ -232,7 +233,7 @@
     <!-- TESTIMONIAL -->
     <section class="sk-section" style="padding-top:0;">
       <div class="quote-banner" data-reveal="fade">
-        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150" alt="Marcus Webb" loading="lazy">
+        <img src="" alt="Marcus Webb" loading="lazy">
         <div>
           <blockquote>"We were live and shipping from the dashboard within two weeks of signing up — no back-and-forth needed."</blockquote>
           <cite>Marcus Webb — VP Network Ops, CircuitWorks</cite>
@@ -251,57 +252,98 @@
       </div>
     </section>
   </main>
-
-  <footer class="footer-block">
+<footer class="footer-block">
     <div class="footer-main-layout">
-      <div class="footer-brand-column" data-reveal="fade">
-        <div class="logo-lockup">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M5 19L19 5M19 5H9M19 5V15" stroke="#F2A93B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Stackly
+
+        <!-- Brand -->
+        <div class="footer-brand-column" data-reveal="fade">
+            <div class="logo-box">
+                <a href="./home.html">
+                    <img src="./src/logo/Untitled design-compressed (1).webp" alt="Stackly Logo">
+                </a>
+            </div>
+
+            <p class="footer-desc">
+                Real-time logistics intelligence for operations teams that refuse to be in the dark.
+                Track, predict, optimise — all in one platform.
+            </p>
         </div>
-      </div>
-      <div class="footer-nav-column" data-reveal="fade">
-        <h4>Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="service.html">Services</a></li>
-          <li><a href="blog.html">Blog</a></li>
-        </ul>
-      </div>
-      <div class="footer-nav-column" data-reveal="fade">
-        <h4>Socials</h4>
-        <ul>
-          <li><a href="404.html">Facebook</a></li>
-          <li><a href="404.html">Linkedin</a></li>
-          <li><a href="404.html">X</a></li>
-          <li><a href="404.html">Instagram</a></li>
-        </ul>
-      </div>
-      <div class="footer-nav-column newsletter-wrapper" data-reveal="fade">
-        <h4>Subscribe Newsletter</h4>
-        <p>Sign up to our weekly newsletter to get the latest updates.</p>
-        <div class="newsletter-field-box">
-          <input type="email" placeholder="Enter your email" required>
-          <button class="btn-news-submit" aria-label="Submit email address">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </button>
+
+        <!-- Quick Links -->
+        <div class="footer-nav-column" data-reveal="fade">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </div>
-      </div>
+
+        <!-- Services -->
+        <div class="footer-nav-column" data-reveal="fade">
+            <h4>Services</h4>
+            <ul>
+                <li><a href="404.html">Freight Forwarding</a></li>
+                <li><a href="404.html">Warehousing</a></li>
+                <li><a href="404.html">Order Fulfillment</a></li>
+                <li><a href="404.html">Supply Chain</a></li>
+                <li><a href="404.html">Last Mile Delivery</a></li>
+            </ul>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-nav-column" data-reveal="fade">
+                <h4>Socials</h4>
+                  <ul class="social-links">
+                <li><a href="404.html"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a href="404.html"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                <li><a href="404.html"><i class="fa-brands fa-x-twitter"></i></a></li>
+                <li><a href="404.html"><i class="fa-brands fa-instagram"></i> </a></li>
+            </ul>
+            </div>
+
+        <!-- Newsletter -->
+        <div class="footer-nav-column newsletter-wrapper" data-reveal="fade">
+            <h4>Subscribe Newsletter</h4>
+            <p>Sign up to our weekly newsletter to get the latest logistics insights and company updates.</p>
+
+            <div class="newsletter-field-box">
+                <input type="email" placeholder="Enter your email" required>
+
+                <button class="btn-news-submit" aria-label="Submit email address">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
     </div>
+
     <div class="footer-legal-row">
-      <div class="legal-links">
-        <a href="404.html">Privacy Policies</a>
-        <a href="404.html">Terms of use</a>
-      </div>
-      <div>©2026 Stackly. All rights reserved.</div>
+        <div class="legal-links">
+            <a href="404.html">Privacy Policy</a>
+            <a href="404.html">Terms of Use</a>
+        </div>
+
+        <div>
+            &copy; 2026 Stackly. All rights reserved.
+        </div>
     </div>
-  </footer>
+</footer>
+
   <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
     <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
   </button>
   <script src="script.js"></script>
+  <script>
+    // Store logged-in user's email
+const email = document.getElementById("loginEmail").value;
+localStorage.setItem("userEmail", email);
+
+  </script>
 </body>
 </html>
